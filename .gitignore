@@ -1,0 +1,11 @@
+.tmp/
+test_out/
+dist/
+build/
+deploy/
+node_modules/
+converage/
+
+*.log
+vsc.xml
+
