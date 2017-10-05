@@ -1,3 +1,7 @@
+/**
+ * Configuration automation test
+ */
+
 var HtmlReporter = require('protractor-beautiful-reporter');
 var path = require('path');
 var dotenv = require('dotenv');
@@ -21,7 +25,7 @@ exports.config = {
         showColors: true,
         defaultTimeoutInterval: 30000,
         includeStackTrace: false,
-        print: function(){
+        print: function () {
 
         }
     },
