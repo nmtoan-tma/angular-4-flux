@@ -1,9 +1,14 @@
+#compiled output
 .tmp/
 test_out/
 dist/
 build/
 deploy/
+
+#dependencies
 node_modules/
+
+
 converage/
 
 *.log
