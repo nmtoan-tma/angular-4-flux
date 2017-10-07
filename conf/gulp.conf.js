@@ -12,29 +12,37 @@ exports.paths = {
 };
 
 exports.htmlmin = {
-    ignoreCustomFragments: [/{{.*?}}/]
+    ignoreCustomFragments: [/{{.*?}}/],
+    collapseWhitespace: true
 };
 
 exports.path = {};
 for (const pathName in exports.paths) {
-  if (Object.prototype.hasOwnProperty.call(exports.paths, pathName)) {
-    exports.path[pathName] = function () {
-      const pathValue = exports.paths[pathName];
-      const funcArgs = Array.prototype.slice.call(arguments);
-      const joinArgs = [pathValue].concat(funcArgs);
-      return path.join.apply(this, joinArgs);
-    };
-  }
+    if (Object.prototype.hasOwnProperty.call(exports.paths, pathName)) {
+        exports.path[pathName] = function () {
+            const pathValue = exports.paths[pathName];
+            const funcArgs = Array.prototype.slice.call(arguments);
+            const joinArgs = [pathValue].concat(funcArgs);
+            return path.join.apply(this, joinArgs);
+        };
+    }
 }
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
 exports.errorHandler = function (title) {
-  return function (err) {
-    gutil.log(gutil.colors.red(`[${title}]`), err.toString());
-    this.emit('end');
-  };
+    return function (err) {
+        gutil.log(gutil.colors.red(`[${title}]`), err.toString());
+        this.emit('end');
+    };
 };
 
-
+exports.serverCallBack = function (err) {
+    if (err) {
+        console.log('Sorry! Server could not be ran. Please try to again');
+        console.log(err);
+    } else {
+        console.log('Server ran successfully!');
+    }
+};
