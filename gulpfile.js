@@ -16,13 +16,19 @@ gulp.task('copy-index', gulpCommon.copyIndexTask);
 gulp.task('sass', gulpCommon.sassTask);
 gulp.task('lint-fix', gulpCommon.lintFixTask);
 gulp.task('lint-watch', gulpCommon.lintWatchTask);
-gulp.task('del-version-file', gulpCommon.delVersionFileTask);
 gulp.task('del-config-file', gulpCommon.delConfigFileTask);
-gulp.task('vendor-css', );
-gulp.task('get-build-info', );
-gulp.task('make-version-file', );
-gulp.task('make-deploy-folder', );
-gulp.task('copy-file-to-deploy', );
+gulp.task('make-config-file', gulpCommon.makeConfigFileTask);
+gulp.task('vendor-css', gulpCommon.vendorCssTask);
+
+/**
+ * gulp task for deploy
+ */
+gulp.task('del-version-file', gulpDeploy.delVersionFileTask);
+gulp.task('get-version-info', gulpDeploy.getVersionInfoTask);
+gulp.task('make-version-file', gulpDeploy.makeVersionFileTask);
+gulp.task('make-deploy-folder', gulpDeploy.makeDeployFolderTask);
+gulp.task('copy-file-to-deploy', gulpDeploy.copyFileToDeployFolderTask);
+gulp.task('make-zip-folder', ['make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
 
 /**
  * Gulp task for start server

@@ -8,7 +8,9 @@ exports.paths = {
     test: 'test',
     tasks: 'gulp-tasks',
     build: 'build',
-    tmp: '.tmp'
+    tmp: '.tmp',
+    deploy: 'deploy',
+    release: 'release'
 };
 
 exports.htmlmin = {
@@ -46,3 +48,7 @@ exports.serverCallBack = function (err) {
         console.log('Server ran successfully!');
     }
 };
+
+exports.app = {
+    moduleName: 'mcare'
+}

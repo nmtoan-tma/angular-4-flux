@@ -7,8 +7,23 @@ const paths = require('path');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const htmlmin = require('gulp-htmlmin');
+const dotenv = require('dotenv');
+const createFile = require("create-file");
+const git = require("git-rev-sync");
+const b2v = require("buffer-to-vinyl");
+const ngConfig = require("gulp-ng-config");
 
 const conf = require('../conf/gulp.conf');
+const server = require('../conf/server.conf')();
+
+dotenv.load();
+dotenv.config();
+
+let OPTIONS = {
+    DO_UGLIFY: false,
+    DO_SOURCEMAPS: true,
+    watchInterval: 1000
+};
 
 module.exports = function () {
     return {
@@ -64,15 +79,29 @@ module.exports = function () {
                 conf.paths.src + '**/*.ts'
             ], ['lint-fix']);
         },
-        delVersionFileTask: function(){
-            return del([
-                conf.paths.build + '/js/version.js'
-            ]);
+        makeConfigFileTask: function () {
+            let json = JSON.stringify({});
+
+            return b2v.stream(new Buffer(json), 'config.js')
+                .pipe(ngConfig(conf.app.moduleName, {
+                    createModule: false,
+                    constants: {
+                        SERVICE_URL: server.service_url,
+                        API_PROTOCOL: server.api_protocol,
+                        API_HOST: server.api_host,
+                        API_PORT: server.api_port,
+                        API_DOMAIN: server.api_domain
+                    }
+                }))
+                .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
-        delConfigFileTask: function(){
+        delConfigFileTask: function () {
             return del([
                 conf.paths.build + '/js/config.js'
             ]);
+        },
+        vendorCssTask: function(){
+            
         }
     }
 };
