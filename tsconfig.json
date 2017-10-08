@@ -20,7 +20,7 @@
             "es2016",
             "dom"
         ],
-        "baseUrl": "src"
+        "rootDir": "src"
     },
     "compileOnSave": true,
     "files": [
@@ -28,6 +28,7 @@
         "!node_modules/**"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "build"
     ]
 }

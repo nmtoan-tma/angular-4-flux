@@ -17,7 +17,7 @@ module.exports = () => {
     return {
         delVersionFileTask: () => {
             return del([
-                conf.paths.build + '/js/version.txt'
+                conf.paths.build + '/version.txt'
             ]);
         },
         getVersionInfoTask: () => {

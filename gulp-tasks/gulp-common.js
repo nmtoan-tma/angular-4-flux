@@ -60,7 +60,7 @@ module.exports = () => {
         copyIndexTask: () => {
             return gulp.src(conf.paths.src + '/index.html')
                 .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/'));
+                .pipe(gulp.dest(conf.paths.build + '/app/'));
         },
         sassTask: () => {
             return gulp.src(conf.paths.src + '/styles/styles.scss')
@@ -120,7 +120,7 @@ module.exports = () => {
         },
         copyAngularTask: () => {
             return gulp.src(conf.configs.angular)
-                .pipe(gulp.dest(conf.paths.build + '/libs/' + "@angular/"));
+                .pipe(gulp.dest(conf.paths.build + '/libs/' + '@angular/'));
         },
         copyCorejsTask: () => {
             return gulp.src(conf.configs.corejs)
@@ -142,17 +142,27 @@ module.exports = () => {
             return gulp.src(conf.configs.rxjs)
                 .pipe(gulp.dest(conf.paths.build + '/libs/rxjs/'));
         },
+        copyAngularWebApiTask: () => {
+            return gulp.src(conf.configs.angularWebApi)
+                .pipe(gulp.dest(conf.paths.build + '/libs/angular-in-memory-web-api/'));
+        },
+        copySystemConfigFileTask: () => {
+            return gulp.src(conf.configs.systemConfigFile)
+                .pipe(gulp.dest(conf.paths.build + '/js/'));
+        },
         copyAppTask: () => {
-            
+            return gulp.src(conf.paths.src + '/**/*.js')
+                .pipe(gulp.dest(conf.paths.build + '/app/'));
         },
         vendorJsTask: () => {
             return runSequence(
                 'copy-angular',
-                "copy-corejs",
-                "copy-zonejs",
-                "copy-reflectjs",
-                "copy-systemjs",
-                "copy-rxjs"
+                'copy-corejs',
+                'copy-zonejs',
+                'copy-reflectjs',
+                'copy-systemjs',
+                'copy-rxjs',
+                'copy-system-conf-file'
             );
         },
         tslintTask: () => {
@@ -163,11 +173,11 @@ module.exports = () => {
                 .pipe(tslint.report());
         },
         compileTsTask: () => {
-            let tsResult = gulp.src(con.paths.src + '/**/*.ts')
-                .pipe(sourcemaps.init())
+            let tsResult = gulp.src(conf.paths.src + '/**/*.ts')
+                .pipe(plugins.sourcemaps.init())
                 .pipe(tsc(tsProject));
             return tsResult.js
-                .pipe(sourcemaps.write(".", { sourceRoot: conf.paths.src }))
+                .pipe(plugins.sourcemaps.write(".", { sourceRoot: conf.paths.src }))
                 .pipe(gulp.dest(conf.paths.build + '/app/'));
         },
     }

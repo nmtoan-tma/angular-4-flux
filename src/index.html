@@ -7,22 +7,24 @@
     <title>mCare</title>
     <meta name="description" content="mCare project">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.ico">
 
-    <link rel="stylesheet" href="css/vendor.bundle.css">
-    <link rel="stylesheet" href="css/app.bundle.css">
+    <link rel="stylesheet" href="~/css/vendor.bundle.css">
+    <link rel="stylesheet" href="~/css/app.bundle.css">
 
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="libs/core-js/client/shim.min.js"></script>
+    <script src="~/libs/core-js/client/shim.min.js"></script>
 
-    <script src="libs/zone.js/dist/zone.js"></script>
-    <script src="libs/reflect-metadata/Reflect.js"></script>
-    <script src="libs/systemjs/dist/system.src.js"></script>
+    <script src="~/libs/zone.js/dist/zone.js"></script>
+    <script src="~/libs/reflect-metadata/Reflect.js"></script>
+    <script src="~/libs/systemjs/dist/system.src.js"></script>
 
     <!-- 2. Configure SystemJS -->
-    <script src="js/systemjs.config.js"></script>
-
+    <script src="~/js/systemjs.conf.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 
 <!--<script src="js/polyfills.bundle.js"></script>-->
 <!--<script src="js/vendor.bundle.js"></script>-->
-<script src="js/app.bundle.js"></script>
+<!--<script src="js/app.bundle.js"></script>-->
 
 </html>
 
