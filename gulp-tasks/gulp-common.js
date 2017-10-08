@@ -46,7 +46,7 @@ module.exports = () => {
                 conf.paths.src + '/app/**/*.html'
             ])
                 .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/views/'));
+                .pipe(gulp.dest(conf.paths.build + '/app/views/'));
         },
         copyImagesTask: () => {
             return gulp.src(conf.paths.src + '/assets/images/**/*')
