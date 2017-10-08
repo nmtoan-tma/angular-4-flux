@@ -5,11 +5,15 @@
  */
 const history = require("connect-history-api-fallback");
 
-const server = require('./server.conf');
+const server = require('./server.conf')();
 
 module.exports = () => {
+    let DEV_SERVER = {};
+    let TEST_SERVER = {};
+    let PROD_SERVER = {};
+
     return {
-        DEV_SERVER = {
+        DEV_SERVER: {
             port: server.dev_environment.port,
             host: server.dev_environment.host,
             root: server.dev_environment.base_dir,
@@ -21,7 +25,7 @@ module.exports = () => {
             },
             debug: true
         },
-        TEST_SERVER = {
+        TEST_SERVER: {
             port: server.test_environment.port,
             host: server.test_environment.host,
             root: server.test_environment.base_dir,
@@ -33,7 +37,7 @@ module.exports = () => {
                 ]
             }
         },
-        PROD_SERVER = {
+        PROD_SERVER: {
             port: server.prod_environment.port,
             host: server.prod_environment.host,
             root: server.prod_environment.base_dir,

@@ -17,10 +17,11 @@ const cleanCSS = require('gulp-clean-css');
 const typescript = require('gulp-typescript');
 const tslint = require('gulp-tslint');
 const tsc = require("gulp-typescript");
+const runSequence = require("run-sequence").use(gulp);
 
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
-const tsProject = tsc.createProject('../tsconfig.json');
+const tsProject = tsc.createProject('./tsconfig.json');
 
 dotenv.load();
 dotenv.config();
@@ -123,27 +124,26 @@ module.exports = () => {
         },
         copyCorejsTask: () => {
             return gulp.src(conf.configs.corejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/core-js/'));
         },
         copyZonejsTask: () => {
             return gulp.src(conf.configs.zonejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/zone.js/'));
         },
         copyReflectjsTask: () => {
             return gulp.src(conf.configs.reflectjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/reflect-metadata/'));
         },
         copySystemjsTask: () => {
             return gulp.src(conf.configs.systemjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/systemjs/'));
         },
         copyRxjsTask: () => {
             return gulp.src(conf.configs.rxjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/rxjs/'));
         },
         copyAppTask: () => {
-            return gulp.src(conf.configs.rxjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+            
         },
         vendorJsTask: () => {
             return runSequence(
