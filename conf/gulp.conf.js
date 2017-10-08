@@ -33,14 +33,14 @@ for (const pathName in exports.paths) {
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
-exports.errorHandler = function (title) {
+exports.errorHandler = (title) => {
     return function (err) {
         gutil.log(gutil.colors.red(`[${title}]`), err.toString());
         this.emit('end');
     };
 };
 
-exports.serverCallBack = function (err) {
+exports.serverCallBack = (err) => {
     if (err) {
         console.log('Sorry! Server could not be ran. Please try to again');
         console.log(err);
@@ -51,4 +51,15 @@ exports.serverCallBack = function (err) {
 
 exports.app = {
     moduleName: 'mcare'
-}
+};
+
+exports.configs = {
+    angular: "../node_modules/@angular/**/*.js",
+    angularWebApi: "../node_modules/angular2-in-memory-web-api/*.js",
+    corejs: "../node_modules/core-js/client/shim*.js",
+    zonejs: "../node_modules/zone.js/dist/zone*.js",
+    reflectjs: "../node_modules/reflect-metadata/Reflect*.js",
+    systemjs: "../node_modules/systemjs/dist/*.js",
+    rxjs: "../node_modules/rxjs/**/*.js",
+    jasminejs: "../node_modules/jasmine-core/lib/jasmine-core/*.*"
+};

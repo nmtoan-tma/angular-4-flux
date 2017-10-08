@@ -7,7 +7,7 @@ const history = require("connect-history-api-fallback");
 
 const server = require('./server.conf');
 
-module.exports = function () {
+module.exports = () => {
     return {
         DEV_SERVER = {
             port: server.dev_environment.port,

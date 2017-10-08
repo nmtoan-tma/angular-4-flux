@@ -4,7 +4,7 @@
 
 const dotenv = require('dotenv');
 
-module.exports = function () {
+module.exports = () => {
     dotenv.load();
     const ENV = dotenv.config().parsed || {};
     const ENV_SETUP = process.env;

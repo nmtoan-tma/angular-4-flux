@@ -12,9 +12,15 @@ const createFile = require("create-file");
 const git = require("git-rev-sync");
 const b2v = require("buffer-to-vinyl");
 const ngConfig = require("gulp-ng-config");
+const imagemin = require('gulp-imagemin');
+const cleanCSS = require('gulp-clean-css');
+const typescript = require('gulp-typescript');
+const tslint = require('gulp-tslint');
+const tsc = require("gulp-typescript");
 
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
+const tsProject = tsc.createProject('../tsconfig.json');
 
 dotenv.load();
 dotenv.config();
@@ -25,35 +31,37 @@ let OPTIONS = {
     watchInterval: 1000
 };
 
-module.exports = function () {
+module.exports = () => {
     return {
-        cleanTask: function () {
+        cleanTask: () => {
             return del([
                 conf.paths.build + '/**/*'
             ], {
-                force: true
-            });
+                    force: true
+                });
         },
-        copyViewsTask: function () {
+        copyViewsTask: () => {
             return gulp.src([
-                    conf.paths.src + '/app/**/*.html'
-                ])
+                conf.paths.src + '/app/**/*.html'
+            ])
                 .pipe(htmlmin(conf.htmlmin))
                 .pipe(gulp.dest(conf.paths.build + '/views/'));
         },
-        copyImagesTask: function () {
+        copyImagesTask: () => {
             return gulp.src(conf.paths.src + '/assets/images/**/*')
+                .pipe(imagemin())
                 .pipe(gulp.dest(conf.paths.build + '/images/'));
         },
-        copyFontsTask: function () {
+        copyFontsTask: () => {
             return gulp.src(conf.paths.src + '/assets/fonts/**/*')
                 .pipe(gulp.dest(conf.paths.build + '/fonts/'));
         },
-        copyIndexTask: function () {
+        copyIndexTask: () => {
             return gulp.src(conf.paths.src + '/index.html')
+                .pipe(htmlmin(conf.htmlmin))
                 .pipe(gulp.dest(conf.paths.build + '/'));
         },
-        sassTask: function () {
+        sassTask: () => {
             return gulp.src(conf.paths.src + '/styles/styles.scss')
                 .pipe(plugins.sourcemaps.init())
                 .pipe(plugins.sass())
@@ -61,25 +69,26 @@ module.exports = function () {
                 .pipe(plugins.rename(function (path) {
                     path.basename = path.basename.replace('styles', 'app.bundle');
                 }))
+                .pipe(cleanCSS())
                 .pipe(plugins.sourcemaps.write('./'))
                 .pipe(gulp.dest(conf.paths.build + '/css/'));
         },
-        lintFixTask: function () {
+        lintFixTask: () => {
             return gulp.src([
-                    conf.paths.src + '**/*.ts'
-                ])
+                conf.paths.src + '**/*.ts'
+            ])
                 .pipe(eslint({
                     fix: true
                 }))
                 .pipe(eslint.format())
                 .pipe(gulp.dest(conf.paths.src + '/'));
         },
-        lintWatchTask: function () {
+        lintWatchTask: () => {
             return gulp.watch([
                 conf.paths.src + '**/*.ts'
             ], ['lint-fix']);
         },
-        makeConfigFileTask: function () {
+        makeConfigFileTask: () => {
             let json = JSON.stringify({});
 
             return b2v.stream(new Buffer(json), 'config.js')
@@ -95,13 +104,71 @@ module.exports = function () {
                 }))
                 .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
-        delConfigFileTask: function () {
+        delConfigFileTask: () => {
             return del([
                 conf.paths.build + '/js/config.js'
             ]);
         },
-        vendorCssTask: function(){
-            
-        }
+        vendorCssTask: () => {
+            return gulp.src(conf.paths.src + '/assets/css/*.css')
+                .pipe(plugins.sourcemaps.init())
+                .pipe(plugins.concat('vendor.budle.css'))
+                .pipe(cleanCSS())
+                .pipe(plugins.sourcemaps.write('./'))
+                .pipe(gulp.dest(conf.paths.build + '/css/'));
+        },
+        copyAngularTask: () => {
+            return gulp.src(conf.configs.angular)
+                .pipe(gulp.dest(conf.paths.build + '/libs/' + "@angular/"));
+        },
+        copyCorejsTask: () => {
+            return gulp.src(conf.configs.corejs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyZonejsTask: () => {
+            return gulp.src(conf.configs.zonejs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyReflectjsTask: () => {
+            return gulp.src(conf.configs.reflectjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copySystemjsTask: () => {
+            return gulp.src(conf.configs.systemjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyRxjsTask: () => {
+            return gulp.src(conf.configs.rxjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyAppTask: () => {
+            return gulp.src(conf.configs.rxjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        vendorJsTask: () => {
+            return runSequence(
+                'copy-angular',
+                "copy-corejs",
+                "copy-zonejs",
+                "copy-reflectjs",
+                "copy-systemjs",
+                "copy-rxjs"
+            );
+        },
+        tslintTask: () => {
+            return gulp.src(conf.paths.src + '/**/*.ts')
+                .pipe(tslint({
+                    formatter: 'prose'
+                }))
+                .pipe(tslint.report());
+        },
+        compileTsTask: () => {
+            let tsResult = gulp.src(con.paths.src + '/**/*.ts')
+                .pipe(sourcemaps.init())
+                .pipe(tsc(tsProject));
+            return tsResult.js
+                .pipe(sourcemaps.write(".", { sourceRoot: conf.paths.src }))
+                .pipe(gulp.dest(conf.paths.build + '/app/'));
+        },
     }
 };

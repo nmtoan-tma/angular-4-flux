@@ -7,28 +7,28 @@ const runSequence = require("run-sequence").use(gulp);
 const liteServer = require('../conf/lite-server.conf')();
 const conf = require('../conf/gulp.conf');
 
-module.exports = function () {
+module.exports = () => {
     let SERVER_DEV = connect;
     let SERVER_TEST = connect;
     let SERVER_PROD = connect;
 
     return {
-        devServerTask: function () {
+        devServerTask: () => {
             SERVER_DEV.server(liteServer.DEV_SERVER);
         },
-        testServerTask: function () {
+        testServerTask: () => {
             SERVER_TEST.server(liteServer.TEST_SERVER);
         },
-        prodServerTask: function () {
+        prodServerTask: () => {
             SERVER_PROD.server(liteServer.PROD_SERVER);
         },
-        serverDevStartTask: function () {
+        serverDevStartTask: () => {
             return runSequence('dev-server', conf.serverCallBack);
         },
-        serverTestStartTask: function () {
+        serverTestStartTask: () => {
             return runSequence('test-server', conf.serverCallBack);
         },
-        serverProdStartTask: function () {
+        serverProdStartTask: () => {
             return runSequence('prod-server', conf.serverCallBack);
         }
     }

@@ -8,8 +8,21 @@
     <meta name="description" content="mCare project">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
     <link rel="stylesheet" href="css/vendor.bundle.css">
     <link rel="stylesheet" href="css/app.bundle.css">
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="libs/core-js/client/shim.min.js"></script>
+
+    <script src="libs/zone.js/dist/zone.js"></script>
+    <script src="libs/reflect-metadata/Reflect.js"></script>
+    <script src="libs/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+
 </head>
 
 <body>
@@ -18,8 +31,12 @@
     </div>
 </body>
 
-<script src="js/polyfills.bundle.js"></script>
-<script src="js/vendor.bundle.js"></script>
+<!--<script src="js/polyfills.bundle.js"></script>-->
+<!--<script src="js/vendor.bundle.js"></script>-->
 <script src="js/app.bundle.js"></script>
 
 </html>
+
+https://adrientorris.github.io/aspnet-core/how-setup-angular-2-typescript-project-visual-studio-2017.html
+http://blog.codeleak.pl/2016/03/quickstart-angular2-with-typescript-and.html
+http://blog.scottlogic.com/2015/12/24/creating-an-angular-2-build.html

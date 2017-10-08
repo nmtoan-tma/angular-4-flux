@@ -19,6 +19,15 @@ gulp.task('lint-watch', gulpCommon.lintWatchTask);
 gulp.task('del-config-file', gulpCommon.delConfigFileTask);
 gulp.task('make-config-file', gulpCommon.makeConfigFileTask);
 gulp.task('vendor-css', gulpCommon.vendorCssTask);
+gulp.task("copy-angular", gulpCommon.copyAngularTask);
+gulp.task("copy-corejs", gulpCommon.copyCorejsTask);
+gulp.task("copy-zonejs", gulpCommon.copyZonejsTask);
+gulp.task("copy-reflectjs", gulpCommon.copyReflectjsTask);
+gulp.task("copy-systemjs", gulpCommon.copySystemjsTask);
+gulp.task("copy-rxjs", gulpCommon.copyRxjsTask);
+gulp.task('vendor-js', gulpCommon.vendorJsTask);
+gulp.task('tslint', gulpCommon.tslintTask);
+gulp.task('compile-ts', gulpCommon.compileTsTask);
 
 /**
  * gulp task for deploy

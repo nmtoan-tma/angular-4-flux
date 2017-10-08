@@ -13,14 +13,14 @@ const conf = require('../conf/gulp.conf');
 dotenv.load();
 dotenv.config();
 
-module.exports = function () {
+module.exports = () => {
     return {
-        delVersionFileTask: function () {
+        delVersionFileTask: () => {
             return del([
                 conf.paths.build + '/js/version.txt'
             ]);
         },
-        getVersionInfoTask: function () {
+        getVersionInfoTask: () => {
             process.env.GIT_COMMIT_ID = git.short();
             process.env.GIT_BRANCH = git.branch();
 
@@ -36,7 +36,7 @@ module.exports = function () {
             process.env.FOLDER_ZIP = firstName + lastName;
             process.env.FOLDER_ZIP_RELEASE = firstName;
         },
-        makeVersionFileTask: function () {
+        makeVersionFileTask: () => {
             var contents = 'Build Time: ' + process.env.GIT_BUILD_TIME + '\n' +
                 'Build Number: ' + process.env.DEPLOY_MAJOR + '.' + process.env.DEPLOY_MINOR + '.' + process.env.DEPLOY_POINT + '\n' +
                 'Build Type: ' + process.env.DEPLOY_BUILD_TYPE + '\n' +
@@ -51,7 +51,7 @@ module.exports = function () {
                 }
             });
         },
-        makeDeployFolderTask: function () {
+        makeDeployFolderTask: () => {
             return gulp.src([
                     conf.paths.build + '/**/*'
                 ])
@@ -64,7 +64,7 @@ module.exports = function () {
                 ])
                 .pipe(gulp.dest(conf.paths.deploy + '/' + process.env.FOLDER_ZIP + '/' + process.env.FOLDER_ZIP_RELEASE + '/'));
         },
-        makeZipFolderTask: function () {
+        makeZipFolderTask: () => {
             var folderName = process.env.FOLDER_ZIP;
 
             zip.zipFolder({
