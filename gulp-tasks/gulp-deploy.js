@@ -7,6 +7,7 @@ const createFile = require("create-file");
 const git = require("git-rev-sync");
 const dateFormat = require("dateformat");
 const zip = require("zipfolder");
+const runSequence = require('run-sequence').use(gulp);
 
 const conf = require('../conf/gulp.conf');
 
@@ -23,7 +24,7 @@ module.exports = () => {
         getVersionInfoTask: () => {
             process.env.GIT_COMMIT_ID = git.short();
             process.env.GIT_BRANCH = git.branch();
-
+            console.log(process.env);
             let now = new Date();
             process.env.GIT_BUILD_TIME = dateFormat(now, 'dd/mm/yyyy');
 
@@ -78,6 +79,13 @@ module.exports = () => {
                     });
                 }
             });
+        },
+        deployTask: () => {
+            return runSequence(
+                'build',
+                // 'unit-tests',
+                'make-zip-folder',
+                conf.errorHandler);
         }
     }
 };

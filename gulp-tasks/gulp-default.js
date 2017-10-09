@@ -7,18 +7,19 @@ const conf = require('../conf/gulp.conf');
 module.exports = () => {
     return {
         defaultTask: () => {
-            runSequence(
+            return runSequence(
                 'clean', [
-                    'copy-views',
                     'copy-fonts',
                     'copy-images',
-                    'copy-index',
                     'vendor-css',
-                    'sass',
                     'vendor-js',
                     'tslint',
-                    'compile-ts',
-                    'make-config-file'
+                    'lint-fix',
+                    'make-config-file',
+                    'copy-views',
+                    'copy-index',
+                    'sass',
+                    'compile-ts'
                 ],
                 'server-dev-start',
                 'watch',

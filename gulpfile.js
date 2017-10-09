@@ -59,6 +59,7 @@ gulp.task('compile-ts-build', gulpCommon.compileTsWithoutMapTask);
 gulp.task('sass-build', gulpCommon.sassWithoutMapTask);
 gulp.task('copy-views-build', gulpCommon.copyViewsWithMinifyTask);
 gulp.task('copy-index-build', gulpCommon.copyIndexWithMinifyTask);
+gulp.task('build', gulpBuild.buildTask);
 
 /**
  * gulp task for deploy
@@ -69,6 +70,7 @@ gulp.task('make-version-file', gulpDeploy.makeVersionFileTask);
 gulp.task('make-deploy-folder', gulpDeploy.makeDeployFolderTask);
 gulp.task('copy-file-to-deploy', gulpDeploy.copyFileToDeployFolderTask);
 gulp.task('make-zip-folder', ['make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
+gulp.task('deploy', gulpDeploy.deployTask);
 
 /**
  * Gulp task for unit test
