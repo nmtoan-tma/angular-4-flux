@@ -33,13 +33,6 @@ gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
 gulp.task('compile-ts', gulpCommon.compileTsWithMapTask);
-gulp.task('watch-images', gulpCommon.watchImagesTask);
-gulp.task('watch-fonts', gulpCommon.watchFontsTask);
-gulp.task('watch-css', gulpCommon.watchCSSTask);
-gulp.task('watch-sass', gulpCommon.watchSassTask);
-gulp.task('watch-ts', gulpCommon.watchTsTask);
-gulp.task('watch-index', gulpCommon.watchIndexTask);
-gulp.task('watch-html', gulpCommon.watchHtmlTask);
 gulp.task('watch', gulpCommon.watchTask);
 
 /**
@@ -57,6 +50,7 @@ gulp.task("server-prod-start", gulpServer.serverProdStartTask);
  * Gulp task for run local
  */
 gulp.task('default', gulpDefault.defaultTask);
+
 
 /**
  * Gulp task for build

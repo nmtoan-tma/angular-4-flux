@@ -23,6 +23,7 @@ const uglify = require('gulp-uglify');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
 const tsProject = tsc.createProject('./tsconfig.json');
+const gulpDefault = require('./gulp-default')();
 
 dotenv.load();
 dotenv.config();
@@ -61,16 +62,16 @@ module.exports = () => {
 
     var minifyHtml = () => {
         return gulp.src([
-                    conf.paths.src + '/app/**/*.html'
-                ])
-                .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
-                .pipe(gulp.dest(conf.paths.build + '/views/'));
+                conf.paths.src + '/app/**/*.html'
+            ])
+            .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
+            .pipe(gulp.dest(conf.paths.build + '/views/'));
     };
 
     var minifyIndex = () => {
         return gulp.src(conf.paths.src + '/index.html')
-                .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/'));
+            .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
+            .pipe(gulp.dest(conf.paths.build + '/'));
     };
 
     return {
@@ -232,35 +233,33 @@ module.exports = () => {
             OPTIONS.DO_SOURCEMAPS = false;
             tsCompile();
         },
-        watchImagesTask: () => {
+        watchTask: () => {
+            plugins.livereload.listen();
+
             gulp.watch(conf.paths.src + '/assets/images/**', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-images');
             });
-        },
-        watchFontsTask: () => {
+
             gulp.watch(conf.paths.src + '/assets/fonts/**', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-fonts');
             });
-        },
-        watchCSSTask: () => {
+
             gulp.watch(conf.paths.src + '/assets/css/**', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('vendor-css');
             });
-        },
-        watchSassTask: () => {
+
             gulp.watch(conf.paths.src + '/styles/**/*.scss', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('sass');
             });
-        },
-        watchTsTask: () => {
+
             gulp.watch(conf.paths.src + '/app/**/*.ts', {
                 interval: OPTIONS.watchInterval
             }, () => {
@@ -269,31 +268,18 @@ module.exports = () => {
                     'compile-ts'
                 );
             });
-        },
-        watchIndexTask: () => {
-            gulp.watch(conf.paths.src + '/app/index', {
+
+            gulp.watch(conf.paths.src + '/index.html', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-index');
             });
-        },
-        watchHtmlTask: () => {
+
             gulp.watch(conf.paths.src + '/app/**/*.html', {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-views');
             });
-        },
-        watchTask: () => {
-            return runSequence(
-                'watch-images',
-                'watch-fonts',
-                'watch-css',
-                'watch-sass',
-                'watch-ts',
-                'watch-index',
-                'watch-html'
-            );
         }
     }
 };

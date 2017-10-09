@@ -7,7 +7,7 @@ const conf = require('../conf/gulp.conf');
 module.exports = () => {
     return {
         defaultTask: () => {
-            return runSequence(
+            runSequence(
                 'clean', [
                     'copy-views',
                     'copy-fonts',
