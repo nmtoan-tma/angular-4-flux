@@ -15,8 +15,8 @@ module.exports = () => {
                     'copy-index',
                     'vendor-css',
                     'sass',
-                    'tslint',
                     'vendor-js',
+                    'tslint',
                     'compile-ts',
                     'make-config-file'
                 ],

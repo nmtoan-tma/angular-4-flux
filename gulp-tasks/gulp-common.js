@@ -34,6 +34,45 @@ module.exports = () => {
         watchInterval: 1000
     };
 
+    var sass = () => {
+        return gulp.src(conf.paths.src + '/styles/styles.scss')
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
+            .pipe(plugins.sass())
+            .on('error', conf.errorHandler)
+            .pipe(plugins.rename(function (path) {
+                path.basename = path.basename.replace('styles', 'app.bundle');
+            }))
+            .pipe(cleanCSS())
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
+            .pipe(gulp.dest(conf.paths.build + '/css/'));
+    };
+
+    var tsCompile = () => {
+        let tsResult = gulp.src([
+                conf.paths.src + '/**/*.ts'
+            ])
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
+            .pipe(tsProject());
+
+        return tsResult.js
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
+            .pipe(gulp.dest(conf.paths.build + '/'));
+    };
+
+    var minifyHtml = () => {
+        return gulp.src([
+                    conf.paths.src + '/app/**/*.html'
+                ])
+                .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
+                .pipe(gulp.dest(conf.paths.build + '/views/'));
+    };
+
+    var minifyIndex = () => {
+        return gulp.src(conf.paths.src + '/index.html')
+                .pipe(htmlmin(conf.htmlmin))
+                .pipe(gulp.dest(conf.paths.build + '/'));
+    };
+
     return {
         cleanTask: () => {
             return del([
@@ -42,12 +81,13 @@ module.exports = () => {
                 force: true
             });
         },
-        copyViewsTask: () => {
-            return gulp.src([
-                    conf.paths.src + '/app/**/*.html'
-                ])
-                .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/views/'));
+        copyViewsWithMinifyTask: () => {
+            OPTIONS.DO_UGLIFY = true;
+            minifyHtml();
+        },
+        copyViewsWithoutMinifyTask: () => {
+            OPTIONS.DO_UGLIFY = false;
+            minifyHtml();
         },
         copyImagesTask: () => {
             return gulp.src(conf.paths.src + '/assets/images/**/*')
@@ -58,22 +98,21 @@ module.exports = () => {
             return gulp.src(conf.paths.src + '/assets/fonts/**/*')
                 .pipe(gulp.dest(conf.paths.build + '/fonts/'));
         },
-        copyIndexTask: () => {
-            return gulp.src(conf.paths.src + '/index.html')
-                .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/'));
+        copyIndexWithMinifyTask: () => {
+            OPTIONS.DO_UGLIFY = true;
+            minifyIndex();
         },
-        sassTask: () => {
-            return gulp.src(conf.paths.src + '/styles/styles.scss')
-                .pipe(plugins.sourcemaps.init())
-                .pipe(plugins.sass())
-                .on('error', conf.errorHandler)
-                .pipe(plugins.rename(function (path) {
-                    path.basename = path.basename.replace('styles', 'app.bundle');
-                }))
-                .pipe(cleanCSS())
-                .pipe(plugins.sourcemaps.write('./'))
-                .pipe(gulp.dest(conf.paths.build + '/css/'));
+        copyIndexWithoutMinifyTask: () => {
+            OPTIONS.DO_UGLIFY = false;
+            minifyIndex();
+        },
+        sassWithMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = true;
+            sass();
+        },
+        sassWithoutMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = false;
+            sass();
         },
         lintFixTask: () => {
             return gulp.src([
@@ -187,32 +226,74 @@ module.exports = () => {
         },
         compileTsWithMapTask: () => {
             OPTIONS.DO_SOURCEMAPS = true;
-
-            let tsResult = gulp.src([
-                    conf.paths.src + '/**/*.ts'
-                ])
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
-                .pipe(tsProject());
-
-            return tsResult.js
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
-                .pipe(gulp.dest(conf.paths.build + '/'));
+            tsCompile();
         },
         compileTsWithoutMapTask: () => {
             OPTIONS.DO_SOURCEMAPS = false;
-
-            let tsResult = gulp.src([
-                    conf.paths.src + '/**/*.ts'
-                ])
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
-                .pipe(tsProject());
-
-            return tsResult.js
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
-                .pipe(gulp.dest(conf.paths.build + '/'));
+            tsCompile();
+        },
+        watchImagesTask: () => {
+            gulp.watch(conf.paths.src + '/assets/images/**', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('copy-images');
+            });
+        },
+        watchFontsTask: () => {
+            gulp.watch(conf.paths.src + '/assets/fonts/**', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('copy-fonts');
+            });
+        },
+        watchCSSTask: () => {
+            gulp.watch(conf.paths.src + '/assets/css/**', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('vendor-css');
+            });
+        },
+        watchSassTask: () => {
+            gulp.watch(conf.paths.src + '/styles/**/*.scss', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('sass');
+            });
+        },
+        watchTsTask: () => {
+            gulp.watch(conf.paths.src + '/app/**/*.ts', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence(
+                    'tslint',
+                    'compile-ts'
+                );
+            });
+        },
+        watchIndexTask: () => {
+            gulp.watch(conf.paths.src + '/app/index', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('copy-index');
+            });
+        },
+        watchHtmlTask: () => {
+            gulp.watch(conf.paths.src + '/app/**/*.html', {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('copy-views');
+            });
         },
         watchTask: () => {
-
+            return runSequence(
+                'watch-images',
+                'watch-fonts',
+                'watch-css',
+                'watch-sass',
+                'watch-ts',
+                'watch-index',
+                'watch-html'
+            );
         }
     }
 };
