@@ -62,5 +62,7 @@ exports.configs = {
     systemjs: './node_modules/systemjs/dist/*.js',
     rxjs: './node_modules/rxjs/**/*.js',
     jasminejs: './node_modules/jasmine-core/lib/jasmine-core/*.*',
-    systemConfigFile: './conf/systemjs.conf.js'
+    systemConfigFile: './conf/systemjs.conf.js',
+    respondjs: './node_modules/respond.js/src/respond.js',
+    xdomain: './node_modules/xdomain/dist/xdomain.js'
 };

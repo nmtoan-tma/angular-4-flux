@@ -27,10 +27,12 @@ gulp.task('copy-systemjs', gulpCommon.copySystemjsTask);
 gulp.task('copy-rxjs', gulpCommon.copyRxjsTask);
 gulp.task('copy-angularWebApi', gulpCommon.copyAngularWebApiTask);
 gulp.task('copy-system-conf-file', gulpCommon.copySystemConfigFileTask);
+gulp.task('copy-app', gulpCommon.copyAppTask);
+gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
+gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
 gulp.task('compile-ts', gulpCommon.compileTsTask);
-gulp.task('copy-app', gulpCommon.copyAppTask);
 
 /**
  * gulp task for deploy

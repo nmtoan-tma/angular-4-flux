@@ -13,8 +13,7 @@
         ],
         "types": [
             "node",
-            "jasmine",
-            "es6-shim"
+            "jasmine"
         ],
         "lib": [
             "es2016",

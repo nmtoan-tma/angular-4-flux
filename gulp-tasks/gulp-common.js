@@ -38,15 +38,15 @@ module.exports = () => {
             return del([
                 conf.paths.build + '/**/*'
             ], {
-                    force: true
-                });
+                force: true
+            });
         },
         copyViewsTask: () => {
             return gulp.src([
-                conf.paths.src + '/app/**/*.html'
-            ])
+                    conf.paths.src + '/app/**/*.html'
+                ])
                 .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/app/views/'));
+                .pipe(gulp.dest(conf.paths.build + '/views/'));
         },
         copyImagesTask: () => {
             return gulp.src(conf.paths.src + '/assets/images/**/*')
@@ -60,7 +60,7 @@ module.exports = () => {
         copyIndexTask: () => {
             return gulp.src(conf.paths.src + '/index.html')
                 .pipe(htmlmin(conf.htmlmin))
-                .pipe(gulp.dest(conf.paths.build + '/app/'));
+                .pipe(gulp.dest(conf.paths.build + '/'));
         },
         sassTask: () => {
             return gulp.src(conf.paths.src + '/styles/styles.scss')
@@ -76,8 +76,8 @@ module.exports = () => {
         },
         lintFixTask: () => {
             return gulp.src([
-                conf.paths.src + '**/*.ts'
-            ])
+                    conf.paths.src + '**/*.ts'
+                ])
                 .pipe(eslint({
                     fix: true
                 }))
@@ -113,7 +113,7 @@ module.exports = () => {
         vendorCssTask: () => {
             return gulp.src(conf.paths.src + '/assets/css/*.css')
                 .pipe(plugins.sourcemaps.init())
-                .pipe(plugins.concat('vendor.budle.css'))
+                .pipe(plugins.concat('vendor.bundle.css'))
                 .pipe(cleanCSS())
                 .pipe(plugins.sourcemaps.write('./'))
                 .pipe(gulp.dest(conf.paths.build + '/css/'));
@@ -151,8 +151,18 @@ module.exports = () => {
                 .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
         copyAppTask: () => {
-            return gulp.src(conf.paths.src + '/**/*.js')
-                .pipe(gulp.dest(conf.paths.build + '/app/'));
+            return gulp.src([
+                    conf.paths.src + '/**/*.js'
+                ])
+                .pipe(gulp.dest(conf.paths.build + '/'));
+        },
+        copyRespondjsTask: () => {
+            return gulp.src(conf.configs.respondjs)
+                .pipe(gulp.dest(conf.paths.build + '/js/'));
+        },
+        copyXdomainjsTask: () => {
+            return gulp.src(conf.configs.xdomain)
+                .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
         vendorJsTask: () => {
             return runSequence(
@@ -162,7 +172,9 @@ module.exports = () => {
                 'copy-reflectjs',
                 'copy-systemjs',
                 'copy-rxjs',
-                'copy-system-conf-file'
+                'copy-system-conf-file',
+                'copy-respondjs',
+                'copy-xdomainjs'
             );
         },
         tslintTask: () => {
@@ -173,12 +185,16 @@ module.exports = () => {
                 .pipe(tslint.report());
         },
         compileTsTask: () => {
-            let tsResult = gulp.src(conf.paths.src + '/**/*.ts')
+            let tsResult = gulp.src([
+                    conf.paths.src + '/**/*.ts'
+                ])
                 .pipe(plugins.sourcemaps.init())
-                .pipe(tsc(tsProject));
+                .pipe(tsProject());
             return tsResult.js
-                .pipe(plugins.sourcemaps.write(".", { sourceRoot: conf.paths.src }))
-                .pipe(gulp.dest(conf.paths.build + '/app/'));
+                .pipe(plugins.sourcemaps.write(".", {
+                    sourceRoot: conf.paths.src
+                }))
+                .pipe(gulp.dest(conf.paths.build + '/'));
         },
     }
 };
