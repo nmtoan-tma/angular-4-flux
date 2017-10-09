@@ -4,9 +4,9 @@ const gulp = require('gulp');
 
 const gulpCommon = require('./gulp-tasks/gulp-common')();
 const gulpBuild = require('./gulp-tasks/gulp-build')();
-const gulpDefault = require('./gulp-tasks/gulp-default')();
-const gulpDeploy = require('./gulp-tasks/gulp-deploy')();
 const gulpServer = require('./gulp-tasks/gulp-server')();
+const gulpDeploy = require('./gulp-tasks/gulp-deploy')();
+const gulpDefault = require('./gulp-tasks/gulp-default')();
 
 gulp.task('clean', gulpCommon.cleanTask);
 gulp.task('copy-views', gulpCommon.copyViewsTask);
@@ -32,7 +32,8 @@ gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
 gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
-gulp.task('compile-ts', gulpCommon.compileTsTask);
+gulp.task('compile-ts', gulpCommon.compileTsWithMapTask);
+gulp.task('watch', gulpCommon.watchTask);
 
 /**
  * gulp task for deploy
@@ -43,6 +44,7 @@ gulp.task('make-version-file', gulpDeploy.makeVersionFileTask);
 gulp.task('make-deploy-folder', gulpDeploy.makeDeployFolderTask);
 gulp.task('copy-file-to-deploy', gulpDeploy.copyFileToDeployFolderTask);
 gulp.task('make-zip-folder', ['make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
+gulp.task('compile-ts-deploy', gulpCommon.compileTsWithoutMapTask);
 
 /**
  * Gulp task for start server
@@ -54,5 +56,18 @@ gulp.task("server-dev-start", gulpServer.serverDevStartTask);
 gulp.task("server-test-start", gulpServer.serverTestStartTask);
 gulp.task("server-prod-start", gulpServer.serverProdStartTask);
 
+/**
+ * Gulp task for unit test
+ */
+
+/**
+ * Gulp task for automation
+ */
+
+
+/**
+ * Gulp task for run local
+ */
+gulp.task('default', gulpDefault.defaultTask);
 
 

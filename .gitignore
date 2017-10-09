@@ -7,10 +7,12 @@ deploy/
 
 #dependencies
 node_modules/
+package-lock.json
 
 
 converage/
 
 *.log
 vsc.xml
+
 

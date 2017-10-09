@@ -8,16 +8,17 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const htmlmin = require('gulp-htmlmin');
 const dotenv = require('dotenv');
-const createFile = require("create-file");
-const git = require("git-rev-sync");
-const b2v = require("buffer-to-vinyl");
-const ngConfig = require("gulp-ng-config");
+const createFile = require('create-file');
+const git = require('git-rev-sync');
+const b2v = require('buffer-to-vinyl');
+const ngConfig = require('gulp-ng-config');
 const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
 const typescript = require('gulp-typescript');
 const tslint = require('gulp-tslint');
-const tsc = require("gulp-typescript");
-const runSequence = require("run-sequence").use(gulp);
+const tsc = require('gulp-typescript');
+const runSequence = require('run-sequence').use(gulp);
+const uglify = require('gulp-uglify');
 
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
@@ -26,13 +27,13 @@ const tsProject = tsc.createProject('./tsconfig.json');
 dotenv.load();
 dotenv.config();
 
-let OPTIONS = {
-    DO_UGLIFY: false,
-    DO_SOURCEMAPS: true,
-    watchInterval: 1000
-};
-
 module.exports = () => {
+    let OPTIONS = {
+        DO_UGLIFY: false,
+        DO_SOURCEMAPS: true,
+        watchInterval: 1000
+    };
+
     return {
         cleanTask: () => {
             return del([
@@ -180,21 +181,38 @@ module.exports = () => {
         tslintTask: () => {
             return gulp.src(conf.paths.src + '/**/*.ts')
                 .pipe(tslint({
-                    formatter: 'prose'
+                    formatter: 'verbose'
                 }))
                 .pipe(tslint.report());
         },
-        compileTsTask: () => {
+        compileTsWithMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = true;
+
             let tsResult = gulp.src([
                     conf.paths.src + '/**/*.ts'
                 ])
-                .pipe(plugins.sourcemaps.init())
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
                 .pipe(tsProject());
+
             return tsResult.js
-                .pipe(plugins.sourcemaps.write(".", {
-                    sourceRoot: conf.paths.src
-                }))
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
                 .pipe(gulp.dest(conf.paths.build + '/'));
         },
+        compileTsWithoutMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = false;
+
+            let tsResult = gulp.src([
+                    conf.paths.src + '/**/*.ts'
+                ])
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
+                .pipe(tsProject());
+
+            return tsResult.js
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
+                .pipe(gulp.dest(conf.paths.build + '/'));
+        },
+        watchTask: () => {
+
+        }
     }
 };
