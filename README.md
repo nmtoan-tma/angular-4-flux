@@ -12,4 +12,24 @@
 
 5. Beyond Compare 
 
-6. 
+# Technical Apply
+
+## CSS
+
+1. Read about SASS here 
+
+    http://sass-lang.com/guide
+
+2. Read about BEM and OOCSS here:
+
+    http://getbem.com/
+
+    http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+
+    http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+
+## Gulp
+
+1. Read about Gulp
+
+    http://gulpjs.com/
