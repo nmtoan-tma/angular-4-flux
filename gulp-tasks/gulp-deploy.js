@@ -11,10 +11,9 @@ const runSequence = require('run-sequence').use(gulp);
 
 const conf = require('../conf/gulp.conf');
 
-dotenv.load();
-dotenv.config();
-
 module.exports = () => {
+    dotenv.load();
+
     return {
         delVersionFileTask: () => {
             return del([
@@ -24,7 +23,7 @@ module.exports = () => {
         getVersionInfoTask: () => {
             process.env.GIT_COMMIT_ID = git.short();
             process.env.GIT_BRANCH = git.branch();
-            console.log(process.env);
+
             let now = new Date();
             process.env.GIT_BUILD_TIME = dateFormat(now, 'dd/mm/yyyy');
 

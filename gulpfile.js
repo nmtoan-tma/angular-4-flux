@@ -67,7 +67,7 @@ gulp.task('build', gulpBuild.buildTask);
 gulp.task('del-version-file', gulpDeploy.delVersionFileTask);
 gulp.task('get-version-info', gulpDeploy.getVersionInfoTask);
 gulp.task('make-version-file', gulpDeploy.makeVersionFileTask);
-gulp.task('make-deploy-folder', gulpDeploy.makeDeployFolderTask);
+gulp.task('make-deploy-folder', ['get-version-info'],  gulpDeploy.makeDeployFolderTask);
 gulp.task('copy-file-to-deploy', gulpDeploy.copyFileToDeployFolderTask);
 gulp.task('make-zip-folder', ['make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
 gulp.task('deploy', gulpDeploy.deployTask);
