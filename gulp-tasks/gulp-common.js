@@ -7,9 +7,7 @@ const paths = require('path');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const htmlmin = require('gulp-htmlmin');
-const dotenv = require('dotenv');
 const createFile = require('create-file');
-const git = require('git-rev-sync');
 const b2v = require('buffer-to-vinyl');
 const ngConfig = require('gulp-ng-config');
 const imagemin = require('gulp-imagemin');
@@ -24,9 +22,6 @@ const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
 const tsProject = tsc.createProject('./tsconfig.json');
 const gulpDefault = require('./gulp-default')();
-
-dotenv.load();
-dotenv.config();
 
 module.exports = () => {
     let OPTIONS = {
@@ -72,6 +67,15 @@ module.exports = () => {
         return gulp.src(conf.paths.src + '/index.html')
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
             .pipe(gulp.dest(conf.paths.build + '/'));
+    };
+
+    var vendorCSS = () => {
+        return gulp.src(conf.paths.src + '/assets/css/*.css')
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
+                .pipe(plugins.concat('vendor.bundle.css'))
+                .pipe(cleanCSS())
+                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
+                .pipe(gulp.dest(conf.paths.build + '/css/'));
     };
 
     return {
@@ -151,13 +155,13 @@ module.exports = () => {
                 conf.paths.build + '/js/config.js'
             ]);
         },
-        vendorCssTask: () => {
-            return gulp.src(conf.paths.src + '/assets/css/*.css')
-                .pipe(plugins.sourcemaps.init())
-                .pipe(plugins.concat('vendor.bundle.css'))
-                .pipe(cleanCSS())
-                .pipe(plugins.sourcemaps.write('./'))
-                .pipe(gulp.dest(conf.paths.build + '/css/'));
+        vendorCssTaskWithMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = true;
+            vendorCSS();
+        },
+        vendorCssTaskWithoutMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = false;
+            vendorCSS();
         },
         copyAngularTask: () => {
             return gulp.src(conf.configs.angular)

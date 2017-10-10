@@ -18,7 +18,7 @@ gulp.task('lint-fix', gulpCommon.lintFixTask);
 gulp.task('lint-watch', gulpCommon.lintWatchTask);
 gulp.task('del-config-file', gulpCommon.delConfigFileTask);
 gulp.task('make-config-file', gulpCommon.makeConfigFileTask);
-gulp.task('vendor-css', gulpCommon.vendorCssTask);
+gulp.task('vendor-css', gulpCommon.vendorCssTaskWithMapTask);
 gulp.task('copy-angular', gulpCommon.copyAngularTask);
 gulp.task('copy-corejs', gulpCommon.copyCorejsTask);
 gulp.task('copy-zonejs', gulpCommon.copyZonejsTask);
@@ -38,12 +38,12 @@ gulp.task('watch', gulpCommon.watchTask);
 /**
  * Gulp task for start server
  */
-gulp.task("dev-server", gulpServer.devServerTask);
-gulp.task("test-server", gulpServer.testServerTask);
-gulp.task("prod-server", gulpServer.prodServerTask);
-gulp.task("server-dev-start", gulpServer.serverDevStartTask);
-gulp.task("server-test-start", gulpServer.serverTestStartTask);
-gulp.task("server-prod-start", gulpServer.serverProdStartTask);
+gulp.task('dev-server', ['build'], gulpServer.devServerTask);
+gulp.task('test-server', ['build'], gulpServer.testServerTask);
+gulp.task('prod-server', ['build'], gulpServer.prodServerTask);
+gulp.task('server-dev-start', gulpServer.serverDevStartTask);
+gulp.task('server-test-start', gulpServer.serverTestStartTask);
+gulp.task('server-prod-start', gulpServer.serverProdStartTask);
 
 
 /**
@@ -59,6 +59,7 @@ gulp.task('compile-ts-build', gulpCommon.compileTsWithoutMapTask);
 gulp.task('sass-build', gulpCommon.sassWithoutMapTask);
 gulp.task('copy-views-build', gulpCommon.copyViewsWithMinifyTask);
 gulp.task('copy-index-build', gulpCommon.copyIndexWithMinifyTask);
+gulp.task('vendor-css-build', gulpCommon.vendorCssTaskWithoutMapTask);
 gulp.task('build', gulpBuild.buildTask);
 
 /**

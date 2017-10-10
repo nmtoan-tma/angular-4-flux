@@ -11,7 +11,6 @@ module.exports = () => {
                 'clean', [
                     'copy-fonts',
                     'copy-images',
-                    'vendor-css',
                     'vendor-js',
                     'tslint',
                     'lint-fix',
@@ -19,7 +18,9 @@ module.exports = () => {
                     'make-version-file',
                     'copy-views-build',
                     'copy-index-build',
-                    'sass-build'
+                    'vendor-css-build',
+                    'sass-build',
+                    'compile-ts-build'
                 ],
                 conf.errorHandler);
         }
