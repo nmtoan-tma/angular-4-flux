@@ -66,6 +66,31 @@
 
     http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 
+# Setup Local
+
+1. Install Node.js
+
+2. Install Git
+
+3. Install Gulp globally line
+
+    $ npm install gulp -g
+
+    $ gulp
+
+4. Clone source code
+
+5. Open Git bash or Cmd in project dir and run
+
+    $ npm install 
+
+    $ npm install gulp
+
+    $ Open .env file and configuration for API and local server
+
+    $ gulp default
+
+
 
 
 
