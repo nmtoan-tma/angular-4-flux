@@ -38,9 +38,9 @@ gulp.task('watch', gulpCommon.watchTask);
 /**
  * Gulp task for start server
  */
-gulp.task('dev-server', ['build'], gulpServer.devServerTask);
-gulp.task('test-server', ['build'], gulpServer.testServerTask);
-gulp.task('prod-server', ['build'], gulpServer.prodServerTask);
+gulp.task('dev-server', gulpServer.devServerTask);
+gulp.task('test-server', gulpServer.testServerTask);
+gulp.task('prod-server', gulpServer.prodServerTask);
 gulp.task('server-dev-start', gulpServer.serverDevStartTask);
 gulp.task('server-test-start', gulpServer.serverTestStartTask);
 gulp.task('server-prod-start', gulpServer.serverProdStartTask);
