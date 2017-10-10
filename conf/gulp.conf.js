@@ -64,5 +64,10 @@ exports.configs = {
     jasminejs: './node_modules/jasmine-core/lib/jasmine-core/*.*',
     systemConfigFile: './conf/systemjs.conf.js',
     respondjs: './node_modules/respond.js/src/respond.js',
-    xdomain: './node_modules/xdomain/dist/xdomain.js'
+    xdomain: './node_modules/xdomain/dist/xdomain.js',
+    moment: './node_modules/moment/moment.js',
+    momentTimeZone: './node_modules/moment-timezone/moment-timzone.js',
+    bootstrapJs: './node_modules/bootstrap/dist/js/bootstrap.min.js',
+    bootstrapCSS: './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    ng2Bootstrap: './node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js'
 };

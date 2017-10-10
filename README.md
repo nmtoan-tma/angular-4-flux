@@ -14,13 +14,51 @@
 
 # Technical Apply
 
-## CSS
+## Gulp, Git, Node.js, Npm
 
-1. Read about SASS here 
+1. Read about Gulp
+
+    http://gulpjs.com/
+
+    http://code.tutsplus.com/tutorials/managing-your-build-tasks-with-gulpjs--net-36910
+
+    https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
+
+2. Read about Git
+
+    https://git-scm.com/
+
+3. Read about Node.js
+
+    http://nodejs.org/
+
+4. Read about Npm
+
+    https://www.npmjs.com/
+
+5. Angular 4
+
+    https://angular.io/
+
+6. Bootstrap 4
+
+    https://valor-software.com/ngx-bootstrap/
+
+    https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+## Style Guide
+
+1. Angular 
+
+    https://angular.io/guide/styleguide
+
+    https://github.com/johnpapa/angular-styleguide/tree/master/a2
+
+1. CSS - SASS 
 
     http://sass-lang.com/guide
 
-2. Read about BEM and OOCSS here:
+2. CSS - BEM and CSS - OOCSS:
 
     http://getbem.com/
 
@@ -28,8 +66,8 @@
 
     http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 
-## Gulp
 
-1. Read about Gulp
 
-    http://gulpjs.com/
+
+
+

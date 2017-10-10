@@ -17,6 +17,8 @@ const tslint = require('gulp-tslint');
 const tsc = require('gulp-typescript');
 const runSequence = require('run-sequence').use(gulp);
 const uglify = require('gulp-uglify');
+const ngAnnotate = require('gulp-ng-annotate');
+const gp_concat = require('gulp-concat');
 
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
@@ -70,12 +72,15 @@ module.exports = () => {
     };
 
     var vendorCSS = () => {
-        return gulp.src(conf.paths.src + '/assets/css/*.css')
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
-                .pipe(plugins.concat('vendor.bundle.css'))
-                .pipe(cleanCSS())
-                .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
-                .pipe(gulp.dest(conf.paths.build + '/css/'));
+        return gulp.src([
+                conf.paths.src + '/assets/css/*.css',
+                conf.configs.bootstrapCSS
+            ])
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
+            .pipe(plugins.concat('vendor.bundle.css'))
+            .pipe(cleanCSS())
+            .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
+            .pipe(gulp.dest(conf.paths.build + '/css/'));
     };
 
     return {
@@ -197,7 +202,8 @@ module.exports = () => {
         },
         copyAppTask: () => {
             return gulp.src([
-                    conf.paths.src + '/**/*.js'
+                    conf.paths.src + '/**/*.js',
+                    '!' + conf.paths.src + '/assets/**/*.js'
                 ])
                 .pipe(gulp.dest(conf.paths.build + '/'));
         },
@@ -207,6 +213,26 @@ module.exports = () => {
         },
         copyXdomainjsTask: () => {
             return gulp.src(conf.configs.xdomain)
+                .pipe(gulp.dest(conf.paths.build + '/js/'));
+        },
+        copyNg2BootstrapTask: () => {
+            return gulp.src(conf.configs.ng2Bootstrap)
+                .pipe(gulp.dest(conf.paths.build + '/libs/ng2-bootstrap/'));
+        },
+        bundleJsTask: () => {
+            return gulp.src([
+                    conf.paths.src + '/assets/js/**/*.js',
+                    conf.configs.bootstrapJs
+                ])
+                .pipe(eslint({
+                    quiet: true
+                }))
+                .pipe(plugins.sourcemaps.init())
+                .pipe(gp_concat('vendor.bundle.js'))
+                .pipe(uglify())
+                .pipe(ngAnnotate())
+                .pipe(plugins.sourcemaps.write('./'))
+                .on('error', conf.errorHandler)
                 .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
         vendorJsTask: () => {
@@ -219,7 +245,9 @@ module.exports = () => {
                 'copy-rxjs',
                 'copy-system-conf-file',
                 'copy-respondjs',
-                'copy-xdomainjs'
+                'copy-xdomainjs',
+                'copy-ng2-bootstrap',
+                'bundle-js'
             );
         },
         tslintTask: () => {
