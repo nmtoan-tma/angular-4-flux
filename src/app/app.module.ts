@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 /**
  * Router
  */
-import { AppRoutingModule } from './app.router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
