@@ -312,6 +312,14 @@ module.exports = () => {
             }, () => {
                 runSequence('copy-views');
             });
+
+            gulp.watch(conf.paths.build + '/**/*', {
+                interval: OPTIONS.watchInterval
+            }).on('change', function (file) {
+                setTimeout(function () {
+                    plugins.livereload.changed(file);
+                }, 1000);
+            });
         }
     }
 };
