@@ -62,7 +62,7 @@ module.exports = () => {
                 conf.paths.src + '/app/**/*.html'
             ])
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
-            .pipe(gulp.dest(conf.paths.build + '/views/'));
+            .pipe(gulp.dest(conf.paths.build + '/app/views/'));
     };
 
     var minifyIndex = () => {
@@ -221,6 +221,7 @@ module.exports = () => {
         },
         bundleJsTask: () => {
             return gulp.src([
+                    conf.configs.jquery,
                     conf.paths.src + '/assets/js/**/*.js',
                     conf.configs.bootstrapJs
                 ])
@@ -312,7 +313,7 @@ module.exports = () => {
             }, () => {
                 runSequence('copy-views');
             });
-            
+
             gulp.watch(conf.paths.build + '/**/*', {
                 interval: OPTIONS.watchInterval
             }).on('change', function (file) {

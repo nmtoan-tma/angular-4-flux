@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 /**
  * Components
  */
-import { AppComponent } from './app.component';
+import { AppComponent } from './containers/app.container';
 
 /**
  * Router
