@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'app-root',
-    templateUrl: '../views/containers/app.container.html',
+    templateUrl: 'app.component.html',
     styleUrls: []
 })
 

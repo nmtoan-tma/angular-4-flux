@@ -8,7 +8,8 @@ import { HttpModule } from '@angular/http';
 /**
  * Components
  */
-import { AppComponent } from './containers/app.container';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './containers/login/index';
 
 /**
  * Router
@@ -17,11 +18,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        AppRoutingModule
     ],
     providers: [
 

@@ -62,7 +62,7 @@ module.exports = () => {
                 conf.paths.src + '/app/**/*.html'
             ])
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
-            .pipe(gulp.dest(conf.paths.build + '/app/views/'));
+            .pipe(gulp.dest(conf.paths.build + '/app/'));
     };
 
     var minifyIndex = () => {
