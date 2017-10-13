@@ -219,6 +219,10 @@ module.exports = () => {
             return gulp.src(conf.configs.ng2Bootstrap)
                 .pipe(gulp.dest(conf.paths.build + '/libs/ng2-bootstrap/'));
         },
+        copyNgRx: () => {
+            return gulp.src(conf.configs.ngrx)
+                .pipe(gulp.dest(conf.paths.build + '/libs/@ngrx/'));
+        },
         bundleJsTask: () => {
             return gulp.src([
                     conf.configs.jquery,
@@ -248,6 +252,7 @@ module.exports = () => {
                 'copy-respondjs',
                 'copy-xdomainjs',
                 'copy-ng2-bootstrap',
+                'copy-ngrx',
                 'bundle-js'
             );
         },
