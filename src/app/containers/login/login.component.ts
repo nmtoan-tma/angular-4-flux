@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { LOGIN_RESOURCE } from '../../resources/login.resource';
 
 @Component({
     moduleId: module.id,
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
 })
 
 export class LoginComponent {
-
+    resource = LOGIN_RESOURCE;
 }
+

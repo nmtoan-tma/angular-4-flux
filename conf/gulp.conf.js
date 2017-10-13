@@ -70,5 +70,6 @@ exports.configs = {
     bootstrapJs: './node_modules/bootstrap/dist/js/bootstrap.min.js',
     bootstrapCSS: './node_modules/bootstrap/dist/css/bootstrap.min.css',
     ng2Bootstrap: './node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
-    jquery: './node_modules/jquery/dist/jquery.min.js'
+    jquery: './node_modules/jquery/dist/jquery.min.js',
+    ngrx: './node_modules/@ngrx/**/*.js'
 };

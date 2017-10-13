@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
     styleUrls: []
 })
 
-export class AppComponent {
-    
+export class AppComponent implements OnInit {
+
+    ngOnInit() {
+        console.log('Application component initialized ...');
+    }
 }

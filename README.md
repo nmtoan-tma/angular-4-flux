@@ -90,6 +90,14 @@
 
     $ gulp default
 
+# Check new package version
+
+1. Install missing
+
+    $ npm install npm-install-missing
+
+    $ npm-install-missing
+
 
 
 

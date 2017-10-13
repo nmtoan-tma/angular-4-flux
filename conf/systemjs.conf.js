@@ -15,7 +15,10 @@
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             'rxjs': 'npm:rxjs',
             'ng2-bootstrap': 'npm:ng2-bootstrap/ng2-bootstrap.umd.js',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+            '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
+            '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
+            '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js'
         },
         packages: {
             app: {
