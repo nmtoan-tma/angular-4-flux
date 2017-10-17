@@ -1,0 +1,4 @@
+.line--dashed {
+    // @include line('top', 3, 'dashed', '#ccc');
+    border-top: 3px dashed #cccccc;
+}
