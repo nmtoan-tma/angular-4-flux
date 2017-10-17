@@ -1,7 +1,3 @@
-# 10-10-2017
-
-## Completed for build gulp run local and generate deploy folder
-
 # 17-10-2017
 
 ## Update new version of package.json
@@ -13,3 +9,8 @@
 3. connect-history-api-fallback => 1.3.0 to 1.4.0
 
 4. moment => 2.18.1 to 2.19.1
+
+
+# 10-10-2017
+
+## Completed for build gulp run local and generate deploy folder
