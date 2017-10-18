@@ -1,11 +1,16 @@
 /*
-* Mixins
+* Configs
 */
+@import 'core/colors';
+@import 'core/icons';
 
 /*
 * Elements
 */
-@import 'elements/line';
+@import 'elements/text-color';
+@import 'elements/border';
+@import 'elements/margin';
+@import 'elements/checkbox';
 @import 'elements/loading-screen';
 
 /*

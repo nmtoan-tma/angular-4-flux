@@ -66,6 +66,18 @@
 
     http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 
+3. Extensions for visual studio code
+
+    Beautify css/sass/scss/less
+
+    Git History (git log)
+
+    IntelliSense for CSS class name
+
+    Sass
+
+    Sass Formatter
+
 # Setup Local
 
 1. Install Node.js
