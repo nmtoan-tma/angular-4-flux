@@ -36,6 +36,8 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
+    "@ngrx/store-devtools": "^4.0.0",
+    "@ngrx/store-log-monitor": "^3.0.2",
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.41",
     "bootstrap": "^3.3.7",

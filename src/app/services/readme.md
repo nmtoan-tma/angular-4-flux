@@ -1,1 +1,0 @@
-defined function for call APi

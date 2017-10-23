@@ -1,4 +1,4 @@
-export enum LOGIN_RESOURCE {
+export enum LoginResource {
     placeholder_username = 'Username',
     placeholder_password = 'Password',
     text_remember_me = 'Remember Me',
