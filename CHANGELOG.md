@@ -1,3 +1,12 @@
+# 23-10-2017
+
+## Add some package into package.json
+
+1. @ngrx/store-devtools: ^4.0.0
+
+2. @ngrx/store-log-monitor: ^3.0.2
+
+
 # 17-10-2017
 
 ## Update new version of package.json
