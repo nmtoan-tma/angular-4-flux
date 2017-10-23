@@ -1,5 +1,5 @@
 import { AuthenticationService } from './authentication.service';
 
-export class Services {
-    auth: AuthenticationService
-}
+export const SERVICES = [
+    AuthenticationService
+];

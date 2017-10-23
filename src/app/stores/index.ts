@@ -1,5 +1,5 @@
 import { LOGIN_ITEM } from './login.store';
 
-export class Stores {
-
-}
+export const STORES = [
+    LOGIN_ITEM
+];

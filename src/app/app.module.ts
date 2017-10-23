@@ -6,9 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+// import { StoreModule } from '@ngrx/store';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 
 /**
  * Router
@@ -23,15 +23,16 @@ import { AppRoutingModule } from './app-routing.module';
  * Stores
  */
 import { AppComponent } from './app.component';
-import { Containers } from './containers/index';
-import { Models } from './models/index';
-import { Services } from './services/index';
-import { Stores } from './stores/index';
+import { COMPONENTS } from './components/index';
+import { CONTAINERS } from './containers/index';
+import { SERVICES } from './services/index';
+// import { STORES } from './stores/index';
 
 @NgModule({
     declarations: [
         AppComponent,
-        Containers
+        COMPONENTS,
+        CONTAINERS,
     ],
     imports: [
         BrowserModule,
@@ -39,19 +40,19 @@ import { Stores } from './stores/index';
         ReactiveFormsModule,
         FormsModule,
         AppRoutingModule,
-        StoreModule.forRoot({
-            Stores
-        }),
-        StoreDevtoolsModule.instrument({
-            monitor: useLogMonitor({
-                visible: false,
-                position: 'right'
-            })
-        }),
-        StoreLogMonitorModule
+        // StoreModule.forRoot({
+        //     STORES
+        // }),
+        // StoreDevtoolsModule.instrument({
+        //     monitor: useLogMonitor({
+        //         visible: false,
+        //         position: 'right'
+        //     })
+        // }),
+        // StoreLogMonitorModule
     ],
     providers: [
-        Services
+        SERVICES
     ],
     bootstrap: [
         AppComponent

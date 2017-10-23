@@ -1,6 +1,8 @@
 export interface User {
-    userId: number,
-    userName: string,
-    password: string
+    userId: number;
+    userName: string;
+    password: string;
+    remember: boolean;
 }
+
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './containers/login/index';
+import { PageNotFoundComponent } from './components/page-not-found.component';
 
 export const routers: Routes = [
     {
@@ -12,6 +13,10 @@ export const routers: Routes = [
         path: '',
         redirectTo: '/login',
         pathMatch: 'full'
+    },
+    {
+        path: '**',
+        component: PageNotFoundComponent
     }
 ];
 

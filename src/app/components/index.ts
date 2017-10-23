@@ -1,4 +1,5 @@
+import { PageNotFoundComponent } from './page-not-found.component';
 
-export class Components {
-    
-}
+export const COMPONENTS = [
+    PageNotFoundComponent
+];

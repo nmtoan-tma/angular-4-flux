@@ -1,2 +1,2 @@
 export * from './login.component';
-export * from '../../resources/login.resource';
+export * from './login.resource';

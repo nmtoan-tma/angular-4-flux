@@ -18,7 +18,9 @@
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
-            '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js'
+            '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
+            '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
+            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js'
         },
         packages: {
             app: {

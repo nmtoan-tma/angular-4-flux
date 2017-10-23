@@ -1,5 +1,5 @@
-import { LoginComponent } from './login/index';
+import * as LoginContainers from './login/index';
 
-export class Containers {
-    login: LoginComponent
-}
+export const CONTAINERS = [
+    LoginContainers.LoginComponent
+];
