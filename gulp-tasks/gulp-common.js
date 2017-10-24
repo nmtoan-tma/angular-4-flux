@@ -9,7 +9,7 @@ const eslint = require('gulp-eslint');
 const htmlmin = require('gulp-htmlmin');
 const createFile = require('create-file');
 const b2v = require('buffer-to-vinyl');
-const ngConfig = require('gulp-ng-config');
+const gulpTsConfig = require('gulp-ts-config');
 const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
 const typescript = require('gulp-typescript');
@@ -142,15 +142,27 @@ module.exports = () => {
         makeConfigFileTask: () => {
             let json = JSON.stringify({});
 
-            return b2v.stream(new Buffer(json), 'config.js')
-                .pipe(ngConfig(conf.app.moduleName, {
+            return b2v.stream(new Buffer(json), 'appsettings.js')
+                // .pipe(ngConfig(conf.app.moduleName, {
+                //     createModule: false,
+                //     constants: {
+                //         SERVICE_URL: server.service_url,
+                //         API_PROTOCOL: server.api_protocol,
+                //         API_HOST: server.api_host,
+                //         API_PORT: server.api_port,
+                //         API_DOMAIN: server.api_domain,
+                //         ENVIRONMENT: server.environment
+                //     }
+                // }))
+                .pipe(gulpTsConfig('AppSettings', {
                     createModule: false,
                     constants: {
                         SERVICE_URL: server.service_url,
                         API_PROTOCOL: server.api_protocol,
                         API_HOST: server.api_host,
                         API_PORT: server.api_port,
-                        API_DOMAIN: server.api_domain
+                        API_DOMAIN: server.api_domain,
+                        ENVIRONMENT: server.environment
                     }
                 }))
                 .pipe(gulp.dest(conf.paths.build + '/js/'));

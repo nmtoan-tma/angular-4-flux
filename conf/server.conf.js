@@ -25,12 +25,15 @@ module.exports = () => {
     const LIVE_SERVER_PROD_HOST = ENV_SETUP.PROD_SERVER || ENV.PROD_SERVER || 'localhost';
     const LIVE_SERVER_PROD_PORT = ENV_SETUP.PROD_SERVER_PORT || ENV.PROD_SERVER_PORT || '9090';
 
+    const NODE_ENV = ENV.NODE_ENV || 'dev';
+
     let config = {
         api_protocol: API_PROTOCOL,
         api_host: API_HOST,
         api_port: API_PORT,
         api_domain: API_DOMAIN,
         service_url: SERVICE_URL,
+        environment: NODE_ENV,
         dev_environment: {
             host: LIVE_SERVER_DEV_HOST,
             port: LIVE_SERVER_DEV_PORT,

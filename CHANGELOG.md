@@ -1,3 +1,15 @@
+# 24-10-2017
+
+## Update some package into package.json
+
+1. @angular/* : ^4.4.5 => ^4.5.6
+
+2. Add @angular/animations: ^4.5.6
+
+3. Add gulp-ts-config: ^1.0.15
+
+4. removed gulp-ng-config
+
 # 23-10-2017
 
 ## Add some package into package.json
