@@ -13,12 +13,11 @@ module.exports = () => {
                     'copy-images',
                     'vendor-css',
                     'vendor-js',
-                    'tslint',
-                    'lint-fix',
                     'make-config-file',
                     'copy-views',
                     'copy-index',
                     'sass',
+                    'tslint',
                     'compile-ts'
                 ],
                 'server-dev-start',

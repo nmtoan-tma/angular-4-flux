@@ -47,8 +47,8 @@ module.exports = () => {
 
     var tsCompile = () => {
         let tsResult = gulp.src([
-                conf.paths.src + '/**/*.ts'
-            ])
+            conf.paths.src + '/**/*.ts'
+        ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(tsProject());
 
@@ -59,8 +59,8 @@ module.exports = () => {
 
     var minifyHtml = () => {
         return gulp.src([
-                conf.paths.src + '/app/**/*.html'
-            ])
+            conf.paths.src + '/app/**/*.html'
+        ])
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
             .pipe(gulp.dest(conf.paths.build + '/app/'));
     };
@@ -73,9 +73,9 @@ module.exports = () => {
 
     var vendorCSS = () => {
         return gulp.src([
-                conf.paths.src + '/assets/css/*.css',
-                conf.configs.bootstrapCSS
-            ])
+            conf.paths.src + '/assets/css/*.css',
+            conf.configs.bootstrapCSS
+        ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
             .pipe(cleanCSS())
@@ -88,8 +88,8 @@ module.exports = () => {
             return del([
                 conf.paths.build + '/**/*'
             ], {
-                force: true
-            });
+                    force: true
+                });
         },
         copyViewsWithMinifyTask: () => {
             OPTIONS.DO_UGLIFY = true;
@@ -126,8 +126,8 @@ module.exports = () => {
         },
         lintFixTask: () => {
             return gulp.src([
-                    conf.paths.src + '**/*.ts'
-                ])
+                conf.paths.src + '**/*.ts'
+            ])
                 .pipe(eslint({
                     fix: true
                 }))
@@ -142,18 +142,7 @@ module.exports = () => {
         makeConfigFileTask: () => {
             let json = JSON.stringify({});
 
-            return b2v.stream(new Buffer(json), 'appsettings.js')
-                // .pipe(ngConfig(conf.app.moduleName, {
-                //     createModule: false,
-                //     constants: {
-                //         SERVICE_URL: server.service_url,
-                //         API_PROTOCOL: server.api_protocol,
-                //         API_HOST: server.api_host,
-                //         API_PORT: server.api_port,
-                //         API_DOMAIN: server.api_domain,
-                //         ENVIRONMENT: server.environment
-                //     }
-                // }))
+            return b2v.stream(new Buffer(json), 'AppSettings.js')
                 .pipe(gulpTsConfig('AppSettings', {
                     createModule: false,
                     constants: {
@@ -165,13 +154,26 @@ module.exports = () => {
                         ENVIRONMENT: server.environment
                     }
                 }))
-                .pipe(gulp.dest(conf.paths.build + '/js/'));
+                .pipe(gulp.dest(conf.paths.src + '/app/constants/'));
         },
         delConfigFileTask: () => {
             return del([
-                conf.paths.build + '/js/config.js'
+                conf.paths.build + '/app/constants/AppSettings.js'
             ]);
         },
+        // compileConfigFileBuildTask: () => {
+        //     let tsResult = gulp.src([
+        //         conf.paths.build + '/AppSettings.ts'
+        //     ])
+        //         .pipe(tsProject());
+
+        //     tsResult.js
+        //         .pipe(gulp.dest(conf.paths.build + '/'));
+
+        //     return del([
+        //         conf.paths.build + '/AppSettings.ts'
+        //     ]);
+        // },
         vendorCssTaskWithMapTask: () => {
             OPTIONS.DO_SOURCEMAPS = true;
             vendorCSS();
@@ -214,9 +216,9 @@ module.exports = () => {
         },
         copyAppTask: () => {
             return gulp.src([
-                    conf.paths.src + '/**/*.js',
-                    '!' + conf.paths.src + '/assets/**/*.js'
-                ])
+                conf.paths.src + '/**/*.js',
+                '!' + conf.paths.src + '/assets/**/*.js'
+            ])
                 .pipe(gulp.dest(conf.paths.build + '/'));
         },
         copyRespondjsTask: () => {
@@ -237,10 +239,10 @@ module.exports = () => {
         },
         bundleJsTask: () => {
             return gulp.src([
-                    conf.configs.jquery,
-                    conf.paths.src + '/assets/js/**/*.js',
-                    conf.configs.bootstrapJs
-                ])
+                conf.configs.jquery,
+                conf.paths.src + '/assets/js/**/*.js',
+                conf.configs.bootstrapJs
+            ])
                 .pipe(eslint({
                     quiet: true
                 }))
@@ -269,7 +271,10 @@ module.exports = () => {
             );
         },
         tslintTask: () => {
-            return gulp.src(conf.paths.src + '/**/*.ts')
+            return gulp.src([
+                conf.paths.src + '/**/*.ts',
+                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+            ])
                 .pipe(tslint({
                     formatter: 'verbose'
                 }))
@@ -310,7 +315,10 @@ module.exports = () => {
                 runSequence('sass');
             });
 
-            gulp.watch(conf.paths.src + '/app/**/*.ts', {
+            gulp.watch([
+                conf.paths.src + '/app/**/*.ts',
+                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+            ], {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence(

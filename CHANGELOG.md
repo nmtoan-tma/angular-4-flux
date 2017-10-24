@@ -10,6 +10,22 @@
 
 4. removed gulp-ng-config
 
+5. @ngrx/effects: ^4.0.5 => ^4.1.0
+
+6. @ngrx/store: ^4.0.3 => ^4.1.0
+
+7. @types/node: ^8.0.41 => ^8.0.46
+
+8. codelyzer: ^3.2.0 => ^3.2.2
+
+9. gulp-typescript: ^3.2.2 => ^3.2.3
+
+10. protractor: ^5.1.2 => ^5.2.0
+
+11. rxjs: ^5.4.3 => ^5.5.0
+
+12. tslint: ^5.7.0 => ^5.8.0
+
 # 23-10-2017
 
 ## Add some package into package.json

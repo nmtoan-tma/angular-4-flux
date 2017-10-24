@@ -14,5 +14,6 @@ converage/
 
 *.log
 vsc.xml
+src/app/constants/AppSettings.ts
 
 
