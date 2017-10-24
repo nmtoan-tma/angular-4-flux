@@ -35,7 +35,7 @@ gulp.task('copy-ngrx', gulpCommon.copyNgRx);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('bundle-js', gulpCommon.bundleJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
-gulp.task('compile-ts', gulpCommon.compileTsWithMapTask);
+gulp.task('compile-ts', ['make-config-file'], gulpCommon.compileTsWithMapTask);
 gulp.task('watch', gulpCommon.watchTask);
 
 /**
@@ -63,6 +63,7 @@ gulp.task('sass-build', gulpCommon.sassWithoutMapTask);
 gulp.task('copy-views-build', gulpCommon.copyViewsWithMinifyTask);
 gulp.task('copy-index-build', gulpCommon.copyIndexWithMinifyTask);
 gulp.task('vendor-css-build', gulpCommon.vendorCssTaskWithoutMapTask);
+// gulp.task('compile-config-file-build', ['del-config-file'], gulpCommon.compileConfigFileBuildTask)
 gulp.task('build', gulpBuild.buildTask);
 
 /**
@@ -73,7 +74,7 @@ gulp.task('get-version-info', gulpDeploy.getVersionInfoTask);
 gulp.task('make-version-file', gulpDeploy.makeVersionFileTask);
 gulp.task('make-deploy-folder', ['get-version-info'],  gulpDeploy.makeDeployFolderTask);
 gulp.task('copy-file-to-deploy', gulpDeploy.copyFileToDeployFolderTask);
-gulp.task('make-zip-folder', ['make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
+gulp.task('make-zip-folder', ['build', 'make-deploy-folder', 'make-version-file', 'copy-file-to-deploy'], gulpDeploy.makeZipFolderTask);
 gulp.task('deploy', gulpDeploy.deployTask);
 
 /**

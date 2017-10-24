@@ -20,7 +20,8 @@
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
             '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
             '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
-            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js'
+            '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
+            '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js'
         },
         packages: {
             app: {

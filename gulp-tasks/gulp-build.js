@@ -12,14 +12,13 @@ module.exports = () => {
                     'copy-fonts',
                     'copy-images',
                     'vendor-js',
-                    'tslint',
-                    'lint-fix',
                     'make-config-file',
                     'make-version-file',
                     'copy-views-build',
                     'copy-index-build',
                     'vendor-css-build',
                     'sass-build',
+                    'tslint',
                     'compile-ts-build'
                 ],
                 conf.errorHandler);

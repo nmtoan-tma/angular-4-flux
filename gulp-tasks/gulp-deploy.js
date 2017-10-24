@@ -55,7 +55,7 @@ module.exports = () => {
             return gulp.src([
                     conf.paths.build + '/**/*'
                 ])
-                .pipe(gulp.dest(conf.paths.deploy + '/' + process.env.FOLDER_ZIP + '/' + process.env.FOLDER_ZIP_RELEASE + '/' + conf.paths.build));
+                .pipe(gulp.dest(conf.paths.deploy + '/' + process.env.FOLDER_ZIP + '/' + process.env.FOLDER_ZIP_RELEASE + '/' + conf.paths.build + '/'));
         },
         copyFileToDeployFolderTask: function () {
             return gulp.src([
@@ -81,7 +81,7 @@ module.exports = () => {
         },
         deployTask: () => {
             return runSequence(
-                'build',
+                'clean',
                 // 'unit-tests',
                 'make-zip-folder',
                 conf.errorHandler);
