@@ -16,16 +16,15 @@
 
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="libs/core-js/shim.min.js"></script>
-    <script src="libs/zone.js/zone.js"></script>
-    <script src="libs/reflect-metadata/Reflect.js"></script>
-    <script src="libs/systemjs/system.src.js"></script>
-
-    <script src="js/respond.js"></script>
-    <script src="js/xdomain.js"></script>
+    <script src="libs/shim.min.js"></script>
+    <script src="libs/zone.js"></script>
+    <script src="libs/Reflect.js"></script>
+    <script src="libs/system.src.js"></script>
+    <script src="libs/respond.js"></script>
+    <script src="libs/xdomain.js"></script>
 
     <!-- 2. Configure SystemJS -->
-    <script src="js/systemjs.conf.js"></script>
+    <script src="libs/systemjs.conf.js"></script>
     <script>
         System.import('app').catch(function (err) {
             console.error(err);
@@ -33,7 +32,7 @@
     </script>
 </head>
 
-<body ng-app="mcare">
+<body>
     <app-root>
         <div id="loading-wrapper" class="loading-wrapper">
             <div id="loading-text" class="loading-text">LOADING</div>

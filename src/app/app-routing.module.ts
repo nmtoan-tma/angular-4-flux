@@ -1,16 +1,23 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CONTAINERS_ROUTERS } from './containers/index';
+import { NotFoundPageComponent } from './core/containers/not-found-page.component';
+import { LoginPageComponent } from './auth/containers/login.component';
 
 const routers: Routes = [
     {
         path: '',
-        component: CONTAINERS_ROUTERS.LoginFormComponent
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginPageComponent,
+        // canActivate: [Author]
     },
     {
         path: '**',
-        component: CONTAINERS_ROUTERS.NotFoundPageComponent
+        component: NotFoundPageComponent
     }
 ];
 
@@ -26,7 +33,7 @@ const routers: Routes = [
 })
 
 export class AppRoutingModule {
-    
+
 }
 
 

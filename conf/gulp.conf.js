@@ -56,10 +56,10 @@ exports.app = {
 exports.configs = {
     angular: './node_modules/@angular/**/*.js',
     angularWebApi: './node_modules/angular2-in-memory-web-api/*.js',
-    corejs: './node_modules/core-js/client/shim*.js',
-    zonejs: './node_modules/zone.js/dist/zone*.js',
-    reflectjs: './node_modules/reflect-metadata/Reflect*.js',
-    systemjs: './node_modules/systemjs/dist/*.js',
+    corejs: './node_modules/core-js/client/shim.min.js',
+    zonejs: './node_modules/zone.js/dist/zone.js',
+    reflectjs: './node_modules/reflect-metadata/Reflect.js',
+    systemjs: './node_modules/systemjs/dist/system.src.js',
     rxjs: './node_modules/rxjs/**/*.js',
     jasminejs: './node_modules/jasmine-core/lib/jasmine-core/*.*',
     systemConfigFile: './conf/systemjs.conf.js',
@@ -71,5 +71,6 @@ exports.configs = {
     bootstrapCSS: './node_modules/bootstrap/dist/css/bootstrap.min.css',
     ng2Bootstrap: './node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
     jquery: './node_modules/jquery/dist/jquery.min.js',
-    ngrx: './node_modules/@ngrx/**/*.js'
+    ngrx: './node_modules/@ngrx/**/*.js',
+    ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js'
 };

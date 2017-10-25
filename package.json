@@ -15,6 +15,7 @@
     "build": "ng build --prod --aot"
   },
   "dependencies": {
+    "@angular/animations": "^4.4.6",
     "@angular/common": "^4.4.6",
     "@angular/compiler": "^4.4.6",
     "@angular/core": "^4.4.6",
@@ -36,11 +37,13 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
+    "@angular/material": "^2.0.0-beta.7",
     "@ngrx/router-store": "^4.1.0",
     "@ngrx/store-devtools": "^4.0.0",
     "@ngrx/store-log-monitor": "^3.0.2",
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.46",
+    "angular2-in-memory-web-api": "0.0.21",
     "bootstrap": "^3.3.7",
     "buffer-to-vinyl": "^1.1.0",
     "codelyzer": "^3.2.2",
@@ -83,6 +86,7 @@
     "lite-server": "^2.3.0",
     "moment": "^2.19.1",
     "ng2-bootstrap": "^1.6.3",
+    "ngrx-store-freeze": "^0.2.0",
     "path": "^0.12.7",
     "protractor": "^5.2.0",
     "run-sequence": "^2.2.0",

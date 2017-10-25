@@ -1,3 +1,11 @@
+# 25-10-2017
+
+## Update some package into package.json
+
+1. Add @angular/animations : ^4.4.6
+
+2. Add @angular/material: ^2.0.0-beta.12
+
 # 24-10-2017
 
 ## Update some package into package.json

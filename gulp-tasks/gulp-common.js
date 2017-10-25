@@ -154,26 +154,13 @@ module.exports = () => {
                         ENVIRONMENT: server.environment
                     }
                 }))
-                .pipe(gulp.dest(conf.paths.src + '/app/constants/'));
+                .pipe(gulp.dest(conf.paths.src + '/app/shared/constants/'));
         },
         delConfigFileTask: () => {
             return del([
-                conf.paths.build + '/app/constants/AppSettings.js'
+                conf.paths.build + '/app/shared/constants/AppSettings.js'
             ]);
         },
-        // compileConfigFileBuildTask: () => {
-        //     let tsResult = gulp.src([
-        //         conf.paths.build + '/AppSettings.ts'
-        //     ])
-        //         .pipe(tsProject());
-
-        //     tsResult.js
-        //         .pipe(gulp.dest(conf.paths.build + '/'));
-
-        //     return del([
-        //         conf.paths.build + '/AppSettings.ts'
-        //     ]);
-        // },
         vendorCssTaskWithMapTask: () => {
             OPTIONS.DO_SOURCEMAPS = true;
             vendorCSS();
@@ -186,33 +173,45 @@ module.exports = () => {
             return gulp.src(conf.configs.angular)
                 .pipe(gulp.dest(conf.paths.build + '/libs/' + '@angular/'));
         },
-        copyCorejsTask: () => {
-            return gulp.src(conf.configs.corejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/core-js/'));
-        },
-        copyZonejsTask: () => {
-            return gulp.src(conf.configs.zonejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/zone.js/'));
-        },
-        copyReflectjsTask: () => {
-            return gulp.src(conf.configs.reflectjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/reflect-metadata/'));
-        },
-        copySystemjsTask: () => {
-            return gulp.src(conf.configs.systemjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/systemjs/'));
-        },
         copyRxjsTask: () => {
             return gulp.src(conf.configs.rxjs)
                 .pipe(gulp.dest(conf.paths.build + '/libs/rxjs/'));
         },
         copyAngularWebApiTask: () => {
             return gulp.src(conf.configs.angularWebApi)
-                .pipe(gulp.dest(conf.paths.build + '/libs/angular-in-memory-web-api/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/angular2-in-memory-web-api/'));
+        },
+        copyCorejsTask: () => {
+            return gulp.src(conf.configs.corejs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyZonejsTask: () => {
+            return gulp.src(conf.configs.zonejs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyReflectjsTask: () => {
+            return gulp.src(conf.configs.reflectjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copySystemjsTask: () => {
+            return gulp.src(conf.configs.systemjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
         },
         copySystemConfigFileTask: () => {
             return gulp.src(conf.configs.systemConfigFile)
-                .pipe(gulp.dest(conf.paths.build + '/js/'));
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyRespondjsTask: () => {
+            return gulp.src(conf.configs.respondjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyXdomainjsTask: () => {
+            return gulp.src(conf.configs.xdomain)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
+        copyNgrxStoreFreezeTask: () => {
+            return gulp.src(conf.configs.ngrxStoreFreeze)
+                .pipe(gulp.dest(conf.paths.build + '/libs/ngrx-store-freeze/'));
         },
         copyAppTask: () => {
             return gulp.src([
@@ -220,14 +219,6 @@ module.exports = () => {
                 '!' + conf.paths.src + '/assets/**/*.js'
             ])
                 .pipe(gulp.dest(conf.paths.build + '/'));
-        },
-        copyRespondjsTask: () => {
-            return gulp.src(conf.configs.respondjs)
-                .pipe(gulp.dest(conf.paths.build + '/js/'));
-        },
-        copyXdomainjsTask: () => {
-            return gulp.src(conf.configs.xdomain)
-                .pipe(gulp.dest(conf.paths.build + '/js/'));
         },
         copyNg2BootstrapTask: () => {
             return gulp.src(conf.configs.ng2Bootstrap)
@@ -241,7 +232,9 @@ module.exports = () => {
             return gulp.src([
                 conf.configs.jquery,
                 conf.paths.src + '/assets/js/**/*.js',
-                conf.configs.bootstrapJs
+                conf.configs.bootstrapJs,
+                conf.configs.moment,
+                conf.configs.momentTimeZone
             ])
                 .pipe(eslint({
                     quiet: true
@@ -256,24 +249,28 @@ module.exports = () => {
         },
         vendorJsTask: () => {
             return runSequence(
-                'copy-angular',
-                'copy-corejs',
-                'copy-zonejs',
-                'copy-reflectjs',
-                'copy-systemjs',
-                'copy-rxjs',
                 'copy-system-conf-file',
-                'copy-respondjs',
-                'copy-xdomainjs',
-                'copy-ng2-bootstrap',
-                'copy-ngrx',
-                'bundle-js'
+                'bundle-js', [
+                    'copy-angular',
+                    'copy-rxjs',
+                    'copy-angularWebApi',
+                    'copy-ngrx',
+                    'copy-ngrx-store-freeze',
+                    'copy-corejs',
+                    'copy-zonejs',
+                    'copy-reflectjs',
+                    'copy-systemjs',
+                    'copy-respondjs',
+                    'copy-xdomainjs',
+                    // 'copy-ng2-bootstrap',
+                ],
+                conf.errorHandler
             );
         },
         tslintTask: () => {
             return gulp.src([
                 conf.paths.src + '/**/*.ts',
-                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+                '!' + conf.paths.src + '/app/shared/constants/AppSettings.ts'
             ])
                 .pipe(tslint({
                     formatter: 'verbose'
@@ -317,15 +314,15 @@ module.exports = () => {
 
             gulp.watch([
                 conf.paths.src + '/app/**/*.ts',
-                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+                '!' + conf.paths.src + '/app/shared/constants/AppSettings.ts'
             ], {
-                interval: OPTIONS.watchInterval
-            }, () => {
-                runSequence(
-                    'tslint',
-                    'compile-ts'
-                );
-            });
+                    interval: OPTIONS.watchInterval
+                }, () => {
+                    runSequence(
+                        'tslint',
+                        'compile-ts'
+                    );
+                });
 
             gulp.watch(conf.paths.src + '/index.html', {
                 interval: OPTIONS.watchInterval

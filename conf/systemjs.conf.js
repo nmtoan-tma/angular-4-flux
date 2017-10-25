@@ -13,15 +13,18 @@
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
+            '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             'rxjs': 'npm:rxjs',
-            'ng2-bootstrap': 'npm:ng2-bootstrap/ng2-bootstrap.umd.js',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
+            // 'ng2-bootstrap': 'npm:ng2-bootstrap/ng2-bootstrap.umd.js',
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
+            '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
             '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
             '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
             '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
-            '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js'
+            '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js',
+            'ngrx-store-freeze': 'npm:ngrx-store-freeze/bundles/ngrx-store-freeze.umd.js',
+            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js'
         },
         packages: {
             app: {
