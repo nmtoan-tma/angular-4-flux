@@ -72,5 +72,6 @@ exports.configs = {
     ng2Bootstrap: './node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
     jquery: './node_modules/jquery/dist/jquery.min.js',
     ngrx: './node_modules/@ngrx/**/*.js',
-    ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js'
+    ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js',
+    hammerjs: './node_modules/hammerjs/**/*'
 };

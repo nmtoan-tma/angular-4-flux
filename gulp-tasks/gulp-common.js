@@ -213,6 +213,10 @@ module.exports = () => {
             return gulp.src(conf.configs.ngrxStoreFreeze)
                 .pipe(gulp.dest(conf.paths.build + '/libs/ngrx-store-freeze/'));
         },
+        copyHammerjsTask: () => {
+            return gulp.src(conf.configs.hammerjs)
+                .pipe(gulp.dest(conf.paths.build + '/libs/hammerjs/'))
+        },
         copyAppTask: () => {
             return gulp.src([
                 conf.paths.src + '/**/*.js',
@@ -256,6 +260,7 @@ module.exports = () => {
                     'copy-angularWebApi',
                     'copy-ngrx',
                     'copy-ngrx-store-freeze',
+                    'copy-hammerjs',
                     'copy-corejs',
                     'copy-zonejs',
                     'copy-reflectjs',

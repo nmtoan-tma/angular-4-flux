@@ -6,31 +6,44 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import {
+    MatSidenavModule
+} from '@angular/material';
+
 import { routes } from './routers';
 
 /**
  * Module
  */
-
 const MODULES = [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    MatSidenavModule,
+    RouterModule.forRoot(routes, { useHash: false })
 ];
 
 /**
  * Containers
  * Components
  */
-import { AppComponent, LoginPageComponent, NotFoundPageComponent } from './containers/index';
+import { 
+    AppComponent, 
+    LoginPageComponent, 
+    NotFoundPageComponent 
+} from './containers/index';
+
+import { 
+    LayoutComponent 
+} from './components/index';
 
 const COMPONENTS = [
     AppComponent,
     LoginPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    LayoutComponent
 ];
 
 /**
