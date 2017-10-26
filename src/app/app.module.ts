@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule
 } from '@angular/material';
 
 import { routes } from './routers';
@@ -21,7 +22,14 @@ const MODULES = [
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
+
+    /*-----------Start Material-------------*/
+
     MatSidenavModule,
+    MatCardModule,
+
+    /*-----------End Material-------------*/
+
     RouterModule.forRoot(routes, { useHash: false })
 ];
 
@@ -32,18 +40,20 @@ const MODULES = [
 import { 
     AppComponent, 
     LoginPageComponent, 
-    NotFoundPageComponent 
+    NotFoundPageComponent
 } from './containers/index';
 
 import { 
-    LayoutComponent 
+    LayoutComponent,
+    LoginFormComponent
 } from './components/index';
 
 const COMPONENTS = [
     AppComponent,
     LoginPageComponent,
     NotFoundPageComponent,
-    LayoutComponent
+    LayoutComponent,
+    LoginFormComponent
 ];
 
 /**
