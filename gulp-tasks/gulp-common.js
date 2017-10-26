@@ -154,11 +154,11 @@ module.exports = () => {
                         ENVIRONMENT: server.environment
                     }
                 }))
-                .pipe(gulp.dest(conf.paths.src + '/app/shared/constants/'));
+                .pipe(gulp.dest(conf.paths.src + '/app/constants/'));
         },
         delConfigFileTask: () => {
             return del([
-                conf.paths.build + '/app/shared/constants/AppSettings.js'
+                conf.paths.build + '/app/constants/AppSettings.js'
             ]);
         },
         vendorCssTaskWithMapTask: () => {
@@ -270,7 +270,7 @@ module.exports = () => {
         tslintTask: () => {
             return gulp.src([
                 conf.paths.src + '/**/*.ts',
-                '!' + conf.paths.src + '/app/shared/constants/AppSettings.ts'
+                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
             ])
                 .pipe(tslint({
                     formatter: 'verbose'
@@ -314,7 +314,7 @@ module.exports = () => {
 
             gulp.watch([
                 conf.paths.src + '/app/**/*.ts',
-                '!' + conf.paths.src + '/app/shared/constants/AppSettings.ts'
+                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
             ], {
                     interval: OPTIONS.watchInterval
                 }, () => {

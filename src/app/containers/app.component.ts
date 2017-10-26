@@ -1,15 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-
 
 @Component({
     moduleId: module.id,
-    selector: 'app-root',
+    selector: 'mc-app',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: 'app.component.html'
+    templateUrl: './views/app.component.html'
 })
 
 export class AppComponent {
-
+    
 }

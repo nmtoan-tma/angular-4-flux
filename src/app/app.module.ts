@@ -1,59 +1,54 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-// import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { routes } from './routers';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppSettings } from './shared/constants/AppSettings';
-import { CustomRouterStateSerializer } from './shared/utils';
+/**
+ * Module
+ */
 
-import { AppComponent } from './core/containers/app.component';
-import { CoreModule } from './core/core.module';
-// import { reducers, metaReducers } from './reducers/index';
+const MODULES = [
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpModule,
+    FormsModule,
+    RouterModule.forRoot(routes, { useHash: true })
+];
+
+/**
+ * Containers
+ * Components
+ */
+import { AppComponent, LoginPageComponent, NotFoundPageComponent } from './containers/index';
+
+const COMPONENTS = [
+    AppComponent,
+    LoginPageComponent,
+    NotFoundPageComponent
+];
+
+/**
+ * PROVIDERS
+ */
+// import { AuthenticationService, AuthorizationService } from './services/index';
+
+const PROVIDERS = [];
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        CommonModule,
-        BrowserModule,
-        HttpModule,
-        FormsModule,
-        AppRoutingModule,
-
-        // StoreModule.forRoot(reducers, { metaReducers }),
-
-        StoreRouterConnectingModule,
-
-        AppSettings.ENVIRONMENT !== 'prod' ? StoreDevtoolsModule.instrument({
-            monitor: useLogMonitor({
-                visible: false,
-                position: 'right'
-            })
-        }) : [],
-
-        StoreLogMonitorModule,
-
-        EffectsModule.forRoot([]),
-
-        CoreModule.forRoot()
-    ],
-    providers: [
-        {
-            provide: RouterStateSerializer, useClass: CustomRouterStateSerializer
-        }
-    ],
+    declarations: COMPONENTS,
+    imports: MODULES,
+    providers: PROVIDERS,
     bootstrap: [
         AppComponent
     ]
 })
 
-export class AppModule { }
+export class AppModule {
+
+}
