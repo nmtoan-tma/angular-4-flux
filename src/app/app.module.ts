@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 
 import {
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
 } from '@angular/material';
 
 import { routes } from './routers';
@@ -27,6 +28,7 @@ const MODULES = [
 
     MatSidenavModule,
     MatCardModule,
+    MatButtonModule,
 
     /*-----------End Material-------------*/
 
