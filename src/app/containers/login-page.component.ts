@@ -12,6 +12,6 @@ export class LoginPageComponent implements OnInit {
     public resource = LoginPageResource;
 
     ngOnInit() {
-        
+        console.log('login page');
     }
 }

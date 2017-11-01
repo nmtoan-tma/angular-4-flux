@@ -9,17 +9,14 @@ export const routes: Routes = [
     {
         path: '',
         redirectTo: '/login',
-        pathMatch: 'full',
-        // canActivate: [Author]
+        pathMatch: 'full'
     },
     {
         path: 'login',
-        component: LoginPageComponent,
-        // canActivate: [Author]
+        component: LoginPageComponent
     },
     {
         path: '**',
-        component: NotFoundPageComponent,
-        // canActivate: [Author]
+        component: NotFoundPageComponent
     }
 ];

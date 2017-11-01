@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import {
     MatSidenavModule,
@@ -32,20 +34,21 @@ const MODULES = [
 
     /*-----------End Material-------------*/
 
-    RouterModule.forRoot(routes, { useHash: false })
+    RouterModule.forRoot(routes, { useHash: false }),
+    // StoreRouterConnectingModule,
 ];
 
 /**
  * Containers
  * Components
  */
-import { 
-    AppComponent, 
-    LoginPageComponent, 
+import {
+    AppComponent,
+    LoginPageComponent,
     NotFoundPageComponent
 } from './containers/index';
 
-import { 
+import {
     LayoutComponent,
     LoginFormComponent
 } from './components/index';
@@ -61,9 +64,11 @@ const COMPONENTS = [
 /**
  * PROVIDERS
  */
-// import { AuthenticationService, AuthorizationService } from './services/index';
+import { AuthenticationService, AuthorizationService } from './services/index';
 
-const PROVIDERS = [];
+const PROVIDERS = [
+    AuthenticationService
+];
 
 @NgModule({
     declarations: COMPONENTS,
