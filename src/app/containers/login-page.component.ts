@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginPageResource } from '../enums/LoginPage.resource';
 
@@ -8,6 +8,10 @@ import { LoginPageResource } from '../enums/LoginPage.resource';
     templateUrl: './views/login-page.component.html'
 })
 
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
     public resource = LoginPageResource;
+
+    ngOnInit() {
+        
+    }
 }
