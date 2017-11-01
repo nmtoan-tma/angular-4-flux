@@ -74,7 +74,8 @@ module.exports = () => {
     var vendorCSS = () => {
         return gulp.src([
             conf.paths.src + '/assets/css/*.css',
-            conf.configs.bootstrapCSS
+            conf.configs.bootstrapCSS,
+            conf.configs.materialTheme
         ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
@@ -266,8 +267,7 @@ module.exports = () => {
                     'copy-reflectjs',
                     'copy-systemjs',
                     'copy-respondjs',
-                    'copy-xdomainjs',
-                    // 'copy-ng2-bootstrap',
+                    'copy-xdomainjs'
                 ],
                 conf.errorHandler
             );

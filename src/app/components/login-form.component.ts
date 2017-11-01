@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -6,6 +6,10 @@ import {Component} from '@angular/core';
     templateUrl: './views/login-form.component.html'
 })
 
-export class LoginFormComponent {
-    
+export class LoginFormComponent implements OnInit {
+    @Input() resource: any;
+
+    ngOnInit() {
+        console.log('login form');
+    }
 }

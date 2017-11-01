@@ -1,3 +1,10 @@
-<mc-login-form>
-    
-</mc-login-form>
+<div class="login">
+    <div class="text-center login-header">
+        <img src="{{resource.login_header_logo}}" class="login-header__logo"/>
+        <h4 class="text-bold color--black">{{resource.login_title}}</h4>
+    </div>
+
+    <form name="loginForm" id="loginForm">
+        <mc-login-form [resource]="resource"></mc-login-form>
+    </form>
+</div>

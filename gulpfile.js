@@ -32,7 +32,6 @@ gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
 gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('copy-ngrx-store-freeze', gulpCommon.copyNgrxStoreFreezeTask);
 gulp.task('copy-hammerjs', gulpCommon.copyHammerjsTask);
-// gulp.task('copy-ng2-bootstrap', gulpCommon.copyNg2BootstrapTask);
 gulp.task('copy-ngrx', gulpCommon.copyNgRx);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('bundle-js', gulpCommon.bundleJsTask);
@@ -65,7 +64,6 @@ gulp.task('sass-build', gulpCommon.sassWithoutMapTask);
 gulp.task('copy-views-build', gulpCommon.copyViewsWithMinifyTask);
 gulp.task('copy-index-build', gulpCommon.copyIndexWithMinifyTask);
 gulp.task('vendor-css-build', gulpCommon.vendorCssTaskWithoutMapTask);
-// gulp.task('compile-config-file-build', ['del-config-file'], gulpCommon.compileConfigFileBuildTask)
 gulp.task('build', gulpBuild.buildTask);
 
 /**

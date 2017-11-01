@@ -1,3 +1,24 @@
-<mat-card>
-    
-</mat-card>
+<div class="form-group">
+    <input type="text" class="form-control" id="username" placeholder="{{resource.placeholder_username}}">
+</div>
+
+<div class="form-group">
+    <input type="password" class="form-control" id="password" placeholder="{{resource.placeholder_pw}}">
+</div>
+
+<div class="checkbox checkbox-primary">
+    <input id="rememberMe" type="checkbox">
+    <label for="rememberMe" class="color--gray">{{resource.label_remember_me}}</label>
+</div>
+
+<button type="submit" class="btn btn-primary text-uppercase btn-block login__sign-in">{{resource.label_sign_in}}</button>
+
+<hr class="login__break">
+
+<div class="login__forgot-link text-center">
+    <a href="javascript: void(0)" class="color--gray">{{resource.label_forgot_pw}}</a>
+</div>
+
+<div class="login-footer text-center">
+    <img src="{{resource.login_footer_logo}}" class="login-footer__logo" />
+</div>
