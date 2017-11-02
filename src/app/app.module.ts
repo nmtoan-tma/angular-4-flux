@@ -8,13 +8,9 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
-import {
-    MatSidenavModule,
-    MatCardModule,
-    MatButtonModule
-} from '@angular/material';
-
 import { routes } from './routers';
+import { CustomMaterialModule } from './containers/material.module';
+import { CustomServiceModule } from './services/services.module';
 
 /**
  * Module
@@ -25,17 +21,9 @@ const MODULES = [
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-
-    /*-----------Start Material-------------*/
-
-    MatSidenavModule,
-    MatCardModule,
-    MatButtonModule,
-
-    /*-----------End Material-------------*/
-
+    CustomMaterialModule,
     RouterModule.forRoot(routes, { useHash: false }),
-    // StoreRouterConnectingModule,
+    StoreRouterConnectingModule
 ];
 
 /**
@@ -61,13 +49,8 @@ const COMPONENTS = [
     LoginFormComponent
 ];
 
-/**
- * PROVIDERS
- */
-import { AuthenticationService, AuthorizationService } from './services/index';
-
 const PROVIDERS = [
-    AuthenticationService
+    CustomServiceModule
 ];
 
 @NgModule({
