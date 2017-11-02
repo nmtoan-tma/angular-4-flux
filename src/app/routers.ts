@@ -16,7 +16,11 @@ export const routes: Routes = [
         component: LoginPageComponent
     },
     {
-        path: '**',
+        path: '404',
         component: NotFoundPageComponent
+    },
+    {
+        path: '**',
+        redirectTo: '/404'
     }
 ];

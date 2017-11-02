@@ -3,14 +3,19 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule } from '@ngrx/store-log-monitor';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
 import { routes } from './routers';
 import { CustomMaterialModule } from './containers/material.module';
 import { CustomServiceModule } from './services/services.module';
+import { AppSettings } from './constants/AppSettings';
 
 /**
  * Module
@@ -22,8 +27,7 @@ const MODULES = [
     HttpModule,
     FormsModule,
     CustomMaterialModule,
-    RouterModule.forRoot(routes, { useHash: false }),
-    StoreRouterConnectingModule
+    RouterModule.forRoot(routes, { useHash: false })
 ];
 
 /**

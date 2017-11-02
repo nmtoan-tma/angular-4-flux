@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { AuthenticationService } from './authentication.service';
-import { AuthorizationService } from './authorization.service';
+import { UserService } from './user.service';
 
 @NgModule({
     exports: [
-        AuthenticationService,
-        AuthorizationService
+        UserService
     ]
 })
 

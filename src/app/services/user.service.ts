@@ -12,11 +12,11 @@ MOCK_USER.password = '123';
 
 @Injectable()
 
-export class AuthenticationService {
-   /**
-   * True if authenticated
-   * @type
-   */
+export class UserService {
+    /**
+    * True if authenticated
+    * @type
+    */
     private _authenticated = false;
 
     /**
@@ -26,16 +26,13 @@ export class AuthenticationService {
    * @param {string} password The user's password
    * @returns {Observable<User>} The authenticated user observable.
    */
-    public login(username: string, password: string): Observable<User> {
-        // Normally you would do an HTTP request to determine to
-        // attempt authenticating the user using the supplied credentials.
-
+    public authenticate(username: string, password: string): Observable<User> {
         if (username === MOCK_USER.username && password === MOCK_USER.password) {
             this._authenticated = true;
             return Observable.of(MOCK_USER);
         }
 
-        return Observable.throw(new Error('Invalid email or password'));
+        return Observable.throw(new Error('Invalid username or password'));
     }
 
     /**

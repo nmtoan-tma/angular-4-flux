@@ -1,10 +1,13 @@
 <div class="login">
     <div class="text-center login-header">
-        <img src="{{resource.login_header_logo}}" class="login-header__logo"/>
+        <img src="{{resource.login_header_logo}}" class="login-header__logo" />
         <h4 class="text-bold color--black">{{resource.login_title}}</h4>
     </div>
 
-    <form name="loginForm" id="loginForm">
+    <div class="alert alert-danger" role="alert" *ngIf="error | async">
+        {{error | async}}
+    </div>
+    <form name="loginForm" id="loginForm" (ngSubmit)="login()" novalidate *ngIf="!(loading | async)">
         <mc-login-form [resource]="resource"></mc-login-form>
     </form>
 </div>
