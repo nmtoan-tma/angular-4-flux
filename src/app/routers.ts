@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { NotFoundPageComponent } from './containers/not-found-page.component';
 import { LoginPageComponent } from './containers/login-page.component';
 
-import * as Author from './services/authorization.service';
+import * as Author from './services/user.service';
 
 export const routes: Routes = [
     {

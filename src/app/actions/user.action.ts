@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { User } from '../models/user.model';
 import { UserActionTypes } from '../constants/UserActionTypes';
 
-//------------------------AUTHENTICATION------------------------------//
+// ------------------------AUTHENTICATION------------------------------//
 
 /**
  * Authentication
@@ -47,7 +47,7 @@ export class AuthenticationErrorAction implements Action {
     constructor(public payload?: any) { }
 }
 
-//------------------------AUTHENTICATED------------------------------//
+// ------------------------AUTHENTICATED------------------------------//
 
 /**
  * Checks if user is authenticated
@@ -87,7 +87,7 @@ export class AuthenticatedErrorAction implements Action {
     constructor(public payload?: any) { }
 }
 
-//--------------------------ACTIONS------------------------------//
+// --------------------------ACTIONS------------------------------//
 
 /**
  * Actions type

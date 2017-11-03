@@ -7,4 +7,4 @@ export const UserActionTypes = {
     AUTHENTICATED: type('[user] Authenticated'),
     AUTHENTICATED_ERROR: type('[user] Authenticated error'),
     AUTHENTICATED_SUCCESS: type('[user] Authenticated success')
-}
+};

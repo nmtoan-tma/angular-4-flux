@@ -7,7 +7,5 @@
     <div class="alert alert-danger" role="alert" *ngIf="error | async">
         {{error | async}}
     </div>
-    <form name="loginForm" id="loginForm" (ngSubmit)="login()" novalidate *ngIf="!(loading | async)">
-        <mc-login-form [resource]="resource"></mc-login-form>
-    </form>
+    <login-form [resource]="resource"></login-form>
 </div>

@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'mc-app',
+    selector: 'app',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './views/app.component.html'
 })

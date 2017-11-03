@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'mc-layout',
+    selector: 'layout',
     templateUrl: './views/layout.component.html'
 })
 

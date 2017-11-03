@@ -7,5 +7,5 @@ export interface UserState {
     authenticated: boolean;
     error?: string;
     loading: boolean;
-    user?: User
+    user?: User;
 }
