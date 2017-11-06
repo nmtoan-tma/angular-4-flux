@@ -26,15 +26,6 @@ import * as fromUserActions from '../actions/user.action';
 
 export class UserEffects {
     /**
-   * @constructor
-   * @param {Actions } actions
-   * @param {UserService} userService
-   */
-    constructor(
-        private actions: Actions,
-        private userService: UserService
-    ) { }
-    /**
      * Authenticate user
      * @method authenticate
      */
@@ -48,4 +39,14 @@ export class UserEffects {
                 .map(user => new fromUserActions.AuthenticationSuccessAction({ user: user }))
                 .catch(error => Observable.of(new fromUserActions.AuthenticationErrorAction({ error: error })))
         });
+
+    /**
+   * @constructor
+   * @param {Actions } actions
+   * @param {UserService} userService
+   */
+    constructor(
+        private actions: Actions,
+        private userService: UserService
+    ) { }
 }
