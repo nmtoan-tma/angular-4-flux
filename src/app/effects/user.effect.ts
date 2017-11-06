@@ -37,7 +37,7 @@ export class UserEffects {
         .switchMap(payload => {
             return this.userService.authenticate(payload.username, payload.password, payload.rememberMe)
                 .map(user => new fromUserActions.AuthenticationSuccessAction({ user: user }))
-                .catch(error => Observable.of(new fromUserActions.AuthenticationErrorAction({ error: error })))
+                .catch(error => Observable.of(new fromUserActions.AuthenticationErrorAction({ error: error })));
         });
 
     /**
