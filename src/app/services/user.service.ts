@@ -24,9 +24,10 @@ export class UserService {
    *
    * @param {string} username The user's username
    * @param {string} password The user's password
+   * @param {boolean} rememberMe The user's flag remember 
    * @returns {Observable<User>} The authenticated user observable.
    */
-    public authenticate(username: string, password: string): Observable<User> {
+    public authenticate(username: string, password: string, rememberMe: boolean): Observable<User> {
         if (username === MOCK_USER.username && password === MOCK_USER.password) {
             this._authenticated = true;
             return Observable.of(MOCK_USER);

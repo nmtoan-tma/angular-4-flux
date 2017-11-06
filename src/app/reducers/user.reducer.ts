@@ -10,12 +10,12 @@ import * as fromUserModel from '../models/user.model';
  */
 export function reducer(state = fromUserModel.initialState, action: Actions): fromUserModel.UserState {
     switch (action.type) {
-        case UserActionTypes.AUTHENTICATION:
+        case UserActionTypes.AUTHENTICATE:
             return Object.assign({}, state, {
                 error: undefined,
                 loading: true
             });
-        case UserActionTypes.AUTHENTICATION_SUCCESS:
+        case UserActionTypes.AUTHENTICATE_SUCCESS:
             const user: fromUserModel.User = action.payload.user;
 
             if (user === null) {
@@ -28,7 +28,7 @@ export function reducer(state = fromUserModel.initialState, action: Actions): fr
                 loading: false,
                 user: user
             });
-        case UserActionTypes.AUTHENTICATION_ERROR:
+        case UserActionTypes.AUTHENTICATE_ERROR:
             return Object.assign({}, state, {
                 authenticated: false,
                 error: action.payload.error.message,
