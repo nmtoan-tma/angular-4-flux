@@ -12,7 +12,7 @@ import { UserActionTypes } from '../constants/UserActionTypes';
  * @implements {Action}
  */
 export class AuthenticationAction implements Action {
-    public type: string = UserActionTypes.AUTHENTICATE;
+    public type: string = UserActionTypes.AUTHENTICATION;
 
     constructor(public payload: {
         username: string,
@@ -28,7 +28,7 @@ export class AuthenticationAction implements Action {
  * @implements {Action}
  */
 export class AuthenticationSuccessAction implements Action {
-    public type: string = UserActionTypes.AUTHENTICATE_SUCCESS;
+    public type: string = UserActionTypes.AUTHENTICATION_SUCCESS;
 
     constructor(public payload: {
         user: User
@@ -42,7 +42,7 @@ export class AuthenticationSuccessAction implements Action {
  * @implements {Action}
  */
 export class AuthenticationErrorAction implements Action {
-    public type: string = UserActionTypes.AUTHENTICATE_ERROR;
+    public type: string = UserActionTypes.AUTHENTICATION_ERROR;
 
     constructor(public payload?: any) { }
 }

@@ -1,11 +1,53 @@
 import { Actions } from '../actions/user.action';
 import { UserActionTypes } from '../constants/UserActionTypes';
-import { User } from '../models/user.model';
+import * as fromUserModel from '../models/user.model';
 
+/**
+ * The reducer function
+ * 
+ * @param state current state
+ * @param action incoming action
+ */
+export function reducer(state = fromUserModel.initialState, action: Actions): fromUserModel.UserState {
+    switch (action.type) {
+        case UserActionTypes.AUTHENTICATION:
+            return Object.assign({}, state, {
+                error: undefined,
+                loading: true
+            });
+        case UserActionTypes.AUTHENTICATION_SUCCESS:
+            const user: fromUserModel.User = action.payload.user;
 
-export interface UserState {
-    authenticated: boolean;
-    error?: string;
-    loading: boolean;
-    user?: User;
+            if (user === null) {
+                return state;
+            }
+
+            return Object.assign({}, state, {
+                authenticated: true,
+                error: undefined,
+                loading: false,
+                user: user
+            });
+        case UserActionTypes.AUTHENTICATION_ERROR:
+            return Object.assign({}, state, {
+                authenticated: false,
+                error: action.payload.error.message,
+                loading: false
+            });
+        default:
+            return state;
+    }
 }
+
+export const isAuthenticated = (state: fromUserModel.UserState) => state.authenticated;
+
+export const isAuthenticatedLoaded = (state: fromUserModel.UserState) => state.loaded;
+
+export const isLoading = (state: fromUserModel.UserState) => state.loading;
+
+export const getAuthenticationError = (state: fromUserModel.UserState) => state.error;
+
+export const getAuthenticatedUser = (state: fromUserModel.UserState) => state.user;
+
+
+
