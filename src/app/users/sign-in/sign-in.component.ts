@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LoginPageResource } from '../enums/LoginPage.resource';
+
+import { LoginPageResource } from '../../enums/LoginPage.resource';
 
 @Component({
     moduleId: module.id,
-    selector: 'login-page',
-    templateUrl: './views/login-page.component.html'
+    selector: 'sign-in',
+    templateUrl: './sign-in.component.html'
 })
 
-export class LoginPageComponent implements OnInit, OnDestroy {
+export class SignInComponent implements OnInit, OnDestroy {
     public resource = LoginPageResource;
 
     /**
