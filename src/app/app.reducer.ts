@@ -3,4 +3,6 @@ import {
     createSelector
 } from '@ngrx/store';
 
-export function reducer() { }
+export function reducer() {
+    console.log('ff');
+}

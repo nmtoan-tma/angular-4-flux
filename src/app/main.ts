@@ -8,7 +8,7 @@ if (AppSettings.ENVIRONMENT === 'prod') {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' }).then(ref => { });
+platformBrowserDynamic().bootstrapModule(AppModule);
 
 
 
