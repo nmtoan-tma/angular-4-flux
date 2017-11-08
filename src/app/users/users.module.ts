@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
 
 const COMPONENTS = [
-    SignInComponent
+    SignInComponent,
+    SignOutComponent
 ];
 
 @NgModule({
@@ -17,4 +19,4 @@ const COMPONENTS = [
     ],
     declarations: COMPONENTS
 })
-export class UserModule { }
+export class UsersModule { }

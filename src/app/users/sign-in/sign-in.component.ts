@@ -8,20 +8,6 @@ import { LoginPageResource } from '../../enums/LoginPage.resource';
     templateUrl: './sign-in.component.html'
 })
 
-export class SignInComponent implements OnInit, OnDestroy {
+export class SignInComponent {
     public resource = LoginPageResource;
-
-    /**
-     * @method ngOnInit
-     */
-    public ngOnInit() {
-        console.log('init login page');
-    }
-
-    /**
-     * 
-     */
-    public ngOnDestroy() {
-        console.log('destroy login page');
-    }
 }
