@@ -20,6 +20,7 @@
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             '@angular/cdk': 'npm:@angular/cdk/bundles/cdk.umd.js',
             '@angular/cdk/a11y': 'npm:@angular/cdk/bundles/cdk-a11y.umd.js',
+            '@angular/cdk/accordion': 'npm:@angular/cdk/bundles/cdk-accordion.umd.js',
             '@angular/cdk/bidi': 'npm:@angular/cdk/bundles/cdk-bidi.umd.js',
             '@angular/cdk/coercion': 'npm:@angular/cdk/bundles/cdk-coercion.umd.js',
             '@angular/cdk/collections': 'npm:@angular/cdk/bundles/cdk-collections.umd.js',
@@ -43,7 +44,8 @@
             '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
             '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js',
             'ngrx-store-freeze': 'npm:ngrx-store-freeze/bundles/ngrx-store-freeze.umd.js',
-            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+            'tslib': 'npm:tslib.js'
         },
         packages: {
             app: {

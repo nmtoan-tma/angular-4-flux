@@ -210,6 +210,10 @@ module.exports = () => {
             return gulp.src(conf.configs.xdomain)
                 .pipe(gulp.dest(conf.paths.build + '/libs/'));
         },
+        copyTslibTask: () => {
+            return gulp.src(conf.configs.tslib)
+                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+        },
         copyNgrxStoreFreezeTask: () => {
             return gulp.src(conf.configs.ngrxStoreFreeze)
                 .pipe(gulp.dest(conf.paths.build + '/libs/ngrx-store-freeze/'));
@@ -267,7 +271,8 @@ module.exports = () => {
                     'copy-reflectjs',
                     'copy-systemjs',
                     'copy-respondjs',
-                    'copy-xdomainjs'
+                    'copy-xdomainjs',
+                    'copy-tslib'
                 ],
                 conf.errorHandler
             );

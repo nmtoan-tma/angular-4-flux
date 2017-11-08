@@ -74,5 +74,6 @@ exports.configs = {
     ngrx: './node_modules/@ngrx/**/*.js',
     ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js',
     hammerjs: './node_modules/hammerjs/**/*',
-    materialTheme: './node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css'
+    materialTheme: './node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css',
+    tslib: './node_modules/tslib/tslib.js'
 };

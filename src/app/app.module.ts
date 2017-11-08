@@ -30,7 +30,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
         BrowserModule,
         BrowserAnimationsModule,
         HttpModule,
-        // CustomMaterialModule,
+        CustomMaterialModule,
         AppRoutingModule,
         // HttpClientModule,
         UsersModule,
