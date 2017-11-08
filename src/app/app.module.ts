@@ -14,6 +14,7 @@ import { AppSettings } from './constants/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersModule } from './users/users.module';
 import { CustomMaterialModule } from './core/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // import { reducer } from './app.reducer';
 
