@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import * as fromAngularForms from '@angular/forms';
 
 import { UsersRoutingModule } from './users-routing.module';
 
@@ -15,6 +16,8 @@ const COMPONENTS = [
     exports: COMPONENTS,
     imports: [
         CommonModule,
+        fromAngularForms.FormsModule,
+        fromAngularForms.ReactiveFormsModule,
         UsersRoutingModule
     ],
     declarations: COMPONENTS

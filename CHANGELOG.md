@@ -1,5 +1,25 @@
 # 3-11-2017
 
+## Upgrade some package
+
+1. angular 5.0.0 -> angular 5.0.1
+
+2. @ngrx/effects                           4.1.0       4.1.1
+
+3. @ngrx/router-store                      4.1.0       4.1.1                  
+
+4. @ngrx/store                             4.1.0       4.1.1                  
+
+5. @ngrx/store-devtools                    4.0.0       4.1.1                  
+
+6. @types/node                            8.0.49      8.0.50                 
+
+7. @angular/flex-layout               2.0.0-rc.1      2.0.0-rc.1  
+
+## Add new package @angular/service-worker 5.0.1
+
+# 3-11-2017
+
 ## Upgrade angular 4 -> angular 5
 
 # 25-10-2017
