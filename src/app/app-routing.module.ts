@@ -14,12 +14,12 @@ const routes: Routes = [
         component: NotFoundPageComponent
     },
     {
-        path: '**',
-        redirectTo: '/404'
-    },
-    {
         path: 'users',
         loadChildren: 'app/users/users.module#UsersModule'
+    },
+    {
+        path: '**',
+        redirectTo: '/404'
     }
 ];
 

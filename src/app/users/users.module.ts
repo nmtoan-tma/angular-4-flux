@@ -6,10 +6,15 @@ import { UsersRoutingModule } from './users-routing.module';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
+import { ShowErrorsComponent } from '../core/components/show-errors.component';
+
+import { PassWordPatternValidatorDirective } from './validators/password-validator.directive';
 
 const COMPONENTS = [
     SignInComponent,
-    SignOutComponent
+    SignOutComponent,
+    ShowErrorsComponent,
+    PassWordPatternValidatorDirective
 ];
 
 @NgModule({

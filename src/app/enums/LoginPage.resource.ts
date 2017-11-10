@@ -7,4 +7,5 @@ export enum LoginPageResource {
     label_sign_in = 'Sign in',
     label_forgot_pw = 'Forgot your password ?',
     login_footer_logo = '../../images/logo.png',
+    msg_password_pattern = 'Your password must contain at least 3 out of 4 following rules, lowercase, uppercase, numerals, special characters such as !@#$%^&*(){}[]',
 }
