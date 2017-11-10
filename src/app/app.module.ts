@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CustomMaterialModule } from './core/material.module';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppSettings } from './constants/AppSettings';
+import { AppSettings } from './enums/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersModule } from './users/users.module';
 

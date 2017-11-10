@@ -33,7 +33,7 @@ module.exports = () => {
     };
 
     var sass = () => {
-        return gulp.src(conf.paths.src + '/styles/styles.scss')
+        return gulp.src(conf.paths.src + conf.paths.mainScss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.sass())
             .on('error', conf.errorHandler)
@@ -42,7 +42,7 @@ module.exports = () => {
             }))
             .pipe(cleanCSS())
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
-            .pipe(gulp.dest(conf.paths.build + '/css/'));
+            .pipe(gulp.dest(conf.paths.build + conf.paths.buildCssFolder));
     };
 
     var tsCompile = () => {
@@ -59,21 +59,21 @@ module.exports = () => {
 
     var minifyHtml = () => {
         return gulp.src([
-            conf.paths.src + '/app/**/*.html'
+            conf.paths.src + conf.paths.appHtmlFile
         ])
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
-            .pipe(gulp.dest(conf.paths.build + '/app/'));
+            .pipe(gulp.dest(conf.paths.build + conf.paths.buildAppFolder));
     };
 
     var minifyIndex = () => {
-        return gulp.src(conf.paths.src + '/index.html')
+        return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
             .pipe(gulp.dest(conf.paths.build + '/'));
     };
 
     var vendorCSS = () => {
         return gulp.src([
-            conf.paths.src + '/assets/css/*.css',
+            conf.paths.src + conf.paths.assetCssFile,
             conf.configs.bootstrapCSS,
             conf.configs.materialTheme
         ])
@@ -81,7 +81,7 @@ module.exports = () => {
             .pipe(plugins.concat('vendor.bundle.css'))
             .pipe(cleanCSS())
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
-            .pipe(gulp.dest(conf.paths.build + '/css/'));
+            .pipe(gulp.dest(conf.paths.build + conf.paths.buildCssFolder));
     };
 
     return {
@@ -101,13 +101,13 @@ module.exports = () => {
             minifyHtml();
         },
         copyImagesTask: () => {
-            return gulp.src(conf.paths.src + '/assets/images/**/*')
+            return gulp.src(conf.paths.src + conf.paths.assetImageFile)
                 .pipe(imagemin())
-                .pipe(gulp.dest(conf.paths.build + '/images/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildImageFolder));
         },
         copyFontsTask: () => {
-            return gulp.src(conf.paths.src + '/assets/fonts/**/*')
-                .pipe(gulp.dest(conf.paths.build + '/fonts/'));
+            return gulp.src(conf.paths.src + conf.paths.assetFontsFile)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildFontsFolder));
         },
         copyIndexWithMinifyTask: () => {
             OPTIONS.DO_UGLIFY = true;
@@ -155,11 +155,11 @@ module.exports = () => {
                         ENVIRONMENT: server.environment
                     }
                 }))
-                .pipe(gulp.dest(conf.paths.src + '/app/constants/'));
+                .pipe(gulp.dest(conf.paths.src + conf.paths.environmentFile));
         },
         delConfigFileTask: () => {
             return del([
-                conf.paths.build + '/app/constants/AppSettings.js'
+                conf.paths.build + conf.paths.environmentFile +'AppSettings.js'
             ]);
         },
         vendorCssTaskWithMapTask: () => {
@@ -172,75 +172,75 @@ module.exports = () => {
         },
         copyAngularTask: () => {
             return gulp.src(conf.configs.angular)
-                .pipe(gulp.dest(conf.paths.build + '/libs/' + '@angular/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@angular/'));
         },
         copyRxjsTask: () => {
             return gulp.src(conf.configs.rxjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/rxjs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'rxjs/'));
         },
         copyAngularWebApiTask: () => {
             return gulp.src(conf.configs.angularWebApi)
-                .pipe(gulp.dest(conf.paths.build + '/libs/angular2-in-memory-web-api/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'angular2-in-memory-web-api/'));
         },
         copyCorejsTask: () => {
             return gulp.src(conf.configs.corejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyZonejsTask: () => {
             return gulp.src(conf.configs.zonejs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyReflectjsTask: () => {
             return gulp.src(conf.configs.reflectjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copySystemjsTask: () => {
             return gulp.src(conf.configs.systemjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copySystemConfigFileTask: () => {
             return gulp.src(conf.configs.systemConfigFile)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyRespondjsTask: () => {
             return gulp.src(conf.configs.respondjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyXdomainjsTask: () => {
             return gulp.src(conf.configs.xdomain)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyTslibTask: () => {
             return gulp.src(conf.configs.tslib)
-                .pipe(gulp.dest(conf.paths.build + '/libs/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
         copyNgrxStoreFreezeTask: () => {
             return gulp.src(conf.configs.ngrxStoreFreeze)
-                .pipe(gulp.dest(conf.paths.build + '/libs/ngrx-store-freeze/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ngrx-store-freeze/'));
         },
         copyHammerjsTask: () => {
             return gulp.src(conf.configs.hammerjs)
-                .pipe(gulp.dest(conf.paths.build + '/libs/hammerjs/'))
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'hammerjs/'))
         },
         copyAppTask: () => {
             return gulp.src([
                 conf.paths.src + '/**/*.js',
-                '!' + conf.paths.src + '/assets/**/*.js'
+                '!' + conf.paths.src + conf.paths.assetJsAllFile
             ])
                 .pipe(gulp.dest(conf.paths.build + '/'));
         },
         copyNg2BootstrapTask: () => {
             return gulp.src(conf.configs.ng2Bootstrap)
-                .pipe(gulp.dest(conf.paths.build + '/libs/ng2-bootstrap/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ng2-bootstrap/'));
         },
         copyNgRx: () => {
             return gulp.src(conf.configs.ngrx)
-                .pipe(gulp.dest(conf.paths.build + '/libs/@ngrx/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngrx/'));
         },
         bundleJsTask: () => {
             return gulp.src([
                 conf.configs.jquery,
-                conf.paths.src + '/assets/js/**/*.js',
+                conf.paths.src + conf.paths.assetJsFile,
                 conf.configs.bootstrapJs,
                 conf.configs.moment,
                 conf.configs.momentTimeZone
@@ -254,7 +254,7 @@ module.exports = () => {
                 .pipe(ngAnnotate())
                 .pipe(plugins.sourcemaps.write('./'))
                 .on('error', conf.errorHandler)
-                .pipe(gulp.dest(conf.paths.build + '/js/'));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
         vendorJsTask: () => {
             return runSequence(
@@ -280,7 +280,7 @@ module.exports = () => {
         tslintTask: () => {
             return gulp.src([
                 conf.paths.src + '/**/*.ts',
-                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+                '!' + conf.paths.src + conf.paths.environmentFile + 'AppSettings.ts'
             ])
                 .pipe(tslint({
                     formatter: 'verbose'
@@ -298,33 +298,33 @@ module.exports = () => {
         watchTask: () => {
             plugins.livereload.listen();
 
-            gulp.watch(conf.paths.src + '/assets/images/**', {
+            gulp.watch(conf.paths.src + conf.paths.assetImageAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-images');
             });
 
-            gulp.watch(conf.paths.src + '/assets/fonts/**', {
+            gulp.watch(conf.paths.src + conf.paths.assetFontsAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-fonts');
             });
 
-            gulp.watch(conf.paths.src + '/assets/css/**', {
+            gulp.watch(conf.paths.src + conf.paths.assetCssAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('vendor-css');
             });
 
-            gulp.watch(conf.paths.src + '/styles/**/*.scss', {
+            gulp.watch(conf.paths.src + conf.paths.appScssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('sass');
             });
 
             gulp.watch([
-                conf.paths.src + '/app/**/*.ts',
-                '!' + conf.paths.src + '/app/constants/AppSettings.ts'
+                conf.paths.src + conf.paths.appTsFile,
+                '!' + conf.paths.src + conf.paths.environmentFile + 'AppSettings.ts'
             ], {
                     interval: OPTIONS.watchInterval
                 }, () => {
@@ -334,13 +334,13 @@ module.exports = () => {
                     );
                 });
 
-            gulp.watch(conf.paths.src + '/index.html', {
+            gulp.watch(conf.paths.src + conf.paths.appIndexFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-index');
             });
 
-            gulp.watch(conf.paths.src + '/app/**/*.html', {
+            gulp.watch(conf.paths.src + conf.paths.appHtmlFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-views');

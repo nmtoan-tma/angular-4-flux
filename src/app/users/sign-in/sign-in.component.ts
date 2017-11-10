@@ -25,8 +25,11 @@ export class SignInComponent implements OnInit {
         };
 
         this.loginForm = new fromAngularForms.FormGroup({
-            username: new fromAngularForms.FormControl(),
-            password: new fromAngularForms.FormControl(),
+            username: new fromAngularForms.FormControl(['', fromAngularForms.Validators.required]),
+            password: new fromAngularForms.FormControl(['', [
+                fromAngularForms.Validators.required,
+                fromAngularForms.Validators.minLength(3)
+            ]]),
             rememberMe: new fromAngularForms.FormControl()
         });
     }

@@ -10,7 +10,27 @@ exports.paths = {
     build: 'build',
     tmp: '.tmp',
     deploy: 'deploy',
-    release: 'release'
+    release: 'release',
+    environmentFile: '/app/enums/',
+    mainScss: '/styles/styles.scss',
+    appScssFile: '/styles/**/*.scss',
+    appHtmlFile: '/app/**/*.html',
+    appTsFile: '/app/**/*.ts',
+    appIndexFile: '/index.html',
+    assetCssFile: '/assets/css/*.css',
+    assetCssAllFile: '/assets/css/**',
+    assetImageFile: '/assets/images/**/*',
+    assetImageAllFile: '/assets/images/**',
+    assetFontsFile: '/assets/fonts/**/*',
+    assetFontsAllFile: '/assets/fonts/**',
+    assetJsFile: '/assets/js/**/*.js',
+    assetJsAllFile: '/assets/**/*.js',
+    buildCssFolder: '/css/',
+    buildImageFolder: '/images/',
+    buildFontsFolder: '/fonts/',
+    buildLibsFolder: '/libs/',
+    buildJsFolder: '/js/',
+    buildAppFolder: '/app/'
 };
 
 exports.htmlmin = {
