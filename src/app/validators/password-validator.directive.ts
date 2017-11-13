@@ -1,9 +1,9 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import { LoginPageResource } from '../../enums/LoginPage.resource';
-import { UIUtils } from '../../core/ui-utils';
-import { StringUtils } from '../../core/string-utils';
+import { LoginPageResource } from '../enums/LoginPage.resource';
+import { UIUtils } from '../core/ui-utils';
+import { StringUtils } from '../core/string-utils';
 
 @Directive({
     selector: '[passWordPattern]',
@@ -18,10 +18,10 @@ import { StringUtils } from '../../core/string-utils';
 
 export class PassWordPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
-        const currentValue = (ctrl.value);
-        let StringUtil = new StringUtils();
+        const currentValue = ctrl.value;
+        let stringUtil = new StringUtils();
 
-        if (StringUtil.isNullOrUndefined(currentValue)) {
+        if (stringUtil.isNullOrUndefined(currentValue)) {
             return null;
         } else {
             let uiUtil = new UIUtils();

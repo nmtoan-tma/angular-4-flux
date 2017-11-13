@@ -29,4 +29,9 @@ export class UIUtils {
         var re = /^[A-Za-z]+[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*@[A-Za-z0-9]+[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/i;
         return re.test(email);
     }
+
+    isValidInputPattern(input: string): boolean {
+        var re = /^[^<>=\[\]]+$/i;
+        return re.test(input);
+    }
 }

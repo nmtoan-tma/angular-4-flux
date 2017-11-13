@@ -8,12 +8,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { ShowErrorsComponent } from '../core/components/show-errors.component';
 
-import { PassWordPatternValidatorDirective } from './validators/password-validator.directive';
+import { InputPatternValidatorDirective } from '../validators/input-pattern-validator.directive';
+import { PassWordPatternValidatorDirective } from '../validators/password-validator.directive';
 
 const COMPONENTS = [
     SignInComponent,
     SignOutComponent,
     ShowErrorsComponent,
+    InputPatternValidatorDirective,
     PassWordPatternValidatorDirective
 ];
 

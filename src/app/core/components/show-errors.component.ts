@@ -16,8 +16,9 @@ export class ShowErrorsComponent {
         required: (params) => 'This field is required',
         minLength: (params) => 'The min number of charaters is ' + params.requiredLength,
         maxLength: (params) => 'The max number of characters is ' + params.requiredLength,
-        pattern: (params) => 'Operators such as [ ] < > = are not allowed',
-        password: (params) => params.message
+        pattern: (params) => 'Operators such as ' + params.requiredPattern + ' are not allowed',
+        password: (params) => params.message,
+        inputPattern: (params) => params.message
     };
 
     @Input()
