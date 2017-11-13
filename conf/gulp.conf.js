@@ -12,11 +12,15 @@ exports.paths = {
     deploy: 'deploy',
     release: 'release',
     environmentFile: '/app/enums/',
+
     mainScss: '/styles/styles.scss',
     appScssFile: '/styles/**/*.scss',
+
     appHtmlFile: '/app/**/*.html',
     appTsFile: '/app/**/*.ts',
+
     appIndexFile: '/index.html',
+
     assetCssFile: '/assets/css/*.css',
     assetCssAllFile: '/assets/css/**',
     assetImageFile: '/assets/images/**/*',
@@ -25,6 +29,7 @@ exports.paths = {
     assetFontsAllFile: '/assets/fonts/**',
     assetJsFile: '/assets/js/**/*.js',
     assetJsAllFile: '/assets/**/*.js',
+
     buildCssFolder: '/css/',
     buildImageFolder: '/images/',
     buildFontsFolder: '/fonts/',
@@ -95,5 +100,6 @@ exports.configs = {
     ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js',
     hammerjs: './node_modules/hammerjs/**/*',
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
-    tslib: './node_modules/tslib/tslib.js'
+    tslib: './node_modules/tslib/tslib.js',
+    lodash: './node_modules/lodash/lodash.js'
 };

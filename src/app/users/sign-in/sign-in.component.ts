@@ -17,19 +17,14 @@ export class SignInComponent implements OnInit {
 
     ngOnInit() {
         this.resource = LoginPageResource;
-
         this.user = {
             userName: '',
             password: '',
             rememberMe: false
         };
-
         this.loginForm = new fromAngularForms.FormGroup({
-            username: new fromAngularForms.FormControl(['', fromAngularForms.Validators.required]),
-            password: new fromAngularForms.FormControl(['', [
-                fromAngularForms.Validators.required,
-                fromAngularForms.Validators.minLength(3)
-            ]]),
+            username: new fromAngularForms.FormControl(),
+            password: new fromAngularForms.FormControl(),
             rememberMe: new fromAngularForms.FormControl()
         });
     }

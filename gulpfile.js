@@ -31,6 +31,7 @@ gulp.task('copy-app', gulpCommon.copyAppTask);
 gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
 gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('copy-tslib', gulpCommon.copyTslibTask);
+gulp.task('copy-lodash', gulpCommon.copyLodashTask);
 gulp.task('copy-ngrx-store-freeze', gulpCommon.copyNgrxStoreFreezeTask);
 gulp.task('copy-hammerjs', gulpCommon.copyHammerjsTask);
 gulp.task('copy-ngrx', gulpCommon.copyNgRx);

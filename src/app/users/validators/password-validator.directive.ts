@@ -2,6 +2,8 @@ import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
 import { LoginPageResource } from '../../enums/LoginPage.resource';
+import { UIUtils } from '../../core/ui-utils';
+import { StringUtils } from '../../core/string-utils';
 
 @Directive({
     selector: '[passWordPattern]',
@@ -17,39 +19,21 @@ import { LoginPageResource } from '../../enums/LoginPage.resource';
 export class PassWordPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
         const currentValue = (ctrl.value);
+        let StringUtil = new StringUtils();
 
-        const isValid = this.isValidPassword(currentValue);
+        if (StringUtil.isNullOrUndefined(currentValue)) {
+            return null;
+        } else {
+            let uiUtil = new UIUtils();
+            const isValid = uiUtil.isValidPassword(currentValue);
 
-        const message = {
-            password: {
-                message: LoginPageResource.msg_password_pattern
-            }
-        };
+            const message = {
+                password: {
+                    message: LoginPageResource.msg_password_pattern
+                }
+            };
 
-        return isValid ? null : message;
-    }
-
-    private isValidPassword(password: string): boolean {
-        var validated;
-        var isInvalidPass = /(?=.*?[~`\\,.<>?/\|"';-=+.-])/.test(password);
-        var isHasNumber = /(?=.*?[0-9])/.test(password);
-        var isHasLowerCase = /(?=.*?[a-z])/.test(password);
-        var isHasUpperCase = /(?=.*?[A-Z])/.test(password);
-        var isHasSpecialCharacter = /(?=.*?[!@#$%^&*(){}[\]_])/.test(password);
-
-        if (isInvalidPass === false) {
-            if (isHasNumber === true && isHasLowerCase === true && isHasUpperCase === true) {
-                return validated = true;
-            }
-            if (isHasNumber === true && isHasLowerCase === true && isHasSpecialCharacter === true) {
-                return validated = true;
-            }
-            if (isHasNumber === true && isHasUpperCase === true && isHasSpecialCharacter === true) {
-                return validated = true;
-            }
-            if (isHasLowerCase === true && isHasUpperCase === true && isHasSpecialCharacter === true) {
-                return validated = true;
-            }
+            return isValid ? null : message;
         }
     }
 }

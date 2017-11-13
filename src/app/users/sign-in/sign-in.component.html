@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <input type="text" formControlName="username" class="form-control" id="username" placeholder="{{resource.placeholder_username}}"
-                autocomplete="off" spellcheck="off" [ngModel]="user.userName" required>
+                autocomplete="off" spellcheck="off" [ngModel]="user.userName" required="{{resource.placeholder_username}}" pattern="/^[^<>=\[\]]+$/">
             <show-errors [control]="loginForm.controls.username"></show-errors>
         </div>
 
