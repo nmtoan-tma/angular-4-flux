@@ -1,21 +1,22 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import { UIUtils } from '../core/ui-utils';
-import { StringUtils } from '../core/string-utils';
+import { MessageErrorResource } from '../resources/msg-error.resource';
+import { UIUtils } from '../../shared/ui-utils';
+import { StringUtils } from '../../shared/string-utils';
 
 @Directive({
-    selector: '[inputPattern]',
+    selector: '[passWordPattern]',
     providers: [
         {
             provide: NG_VALIDATORS,
-            useExisting: InputPatternValidatorDirective,
+            useExisting: PassWordPatternValidatorDirective,
             multi: true
         }
     ]
 })
 
-export class InputPatternValidatorDirective implements Validator {
+export class PassWordPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
         const currentValue = ctrl.value;
         let stringUtil = new StringUtils();
@@ -23,12 +24,12 @@ export class InputPatternValidatorDirective implements Validator {
         if (stringUtil.isNullOrUndefined(currentValue)) {
             return null;
         } else {
-            let util = new UIUtils();
-            const isValid = util.isValidInputPattern(currentValue);
+            let uiUtil = new UIUtils();
+            const isValid = uiUtil.isValidPassword(currentValue);
 
             const message = {
-                inputPattern: {
-                    message: 'Operators such as [; ]; <; >; = are not allowed'
+                password: {
+                    message: MessageErrorResource.msg_password_pattern
                 }
             };
 

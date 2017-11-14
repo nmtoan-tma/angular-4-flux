@@ -1,7 +1,5 @@
-export interface Users {
-    _id?: number;
+export interface Auth {
     userName: string;
     password: string;
     rememberMe?: boolean;
-    email?: string;
 }

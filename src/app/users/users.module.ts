@@ -3,20 +3,16 @@ import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 
 import { UsersRoutingModule } from './users-routing.module';
-
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignOutComponent } from './sign-out/sign-out.component';
+import { SignInComponent } from './containers/sign-in-page';
 import { ShowErrorsComponent } from '../core/components/show-errors.component';
-
-import { InputPatternValidatorDirective } from '../validators/input-pattern-validator.directive';
-import { PassWordPatternValidatorDirective } from '../validators/password-validator.directive';
+import { InputPatternValidatorDirective } from '../core/directives/input-pattern-validator.directive';
+import { PassWordPatternValidatorDirective } from '../core/directives/password-validator.directive';
 
 const COMPONENTS = [
     SignInComponent,
-    SignOutComponent,
-    ShowErrorsComponent,
     InputPatternValidatorDirective,
-    PassWordPatternValidatorDirective
+    PassWordPatternValidatorDirective,
+    ShowErrorsComponent
 ];
 
 @NgModule({

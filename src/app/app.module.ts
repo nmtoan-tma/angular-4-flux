@@ -17,8 +17,8 @@ import { UsersModule } from './users/users.module';
 
 // import { reducer } from './app.reducer';
 
-import { AppComponent } from './app.component';
-import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { AppComponent } from './core/containers/app-page';
+import { NotFoundPageComponent } from './core/containers/not-found-page';
 
 @NgModule({
     declarations: [
