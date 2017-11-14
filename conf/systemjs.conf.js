@@ -34,7 +34,6 @@
             '@angular/cdk/overlay': 'npm:@angular/cdk/bundles/cdk-overlay.umd.js',
             '@angular/cdk/scrolling': 'npm:@angular/cdk/bundles/cdk-scrolling.umd.js',
             '@angular/cdk/stepper': 'npm:@angular/cdk/bundles/cdk-stepper.umd.js',
-            '@angular/flex-layout': 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
             'rxjs': 'npm:rxjs',
             'hammerjs': 'npm:hammerjs',
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',

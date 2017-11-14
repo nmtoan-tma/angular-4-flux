@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { CustomMaterialModule } from './core/material.module';
-// import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppSettings } from './enums/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +28,6 @@ import { NotFoundPageComponent } from './core/containers/not-found-page';
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
-        // FlexLayoutModule,
         CustomMaterialModule,
         AppRoutingModule,
         UsersModule,
