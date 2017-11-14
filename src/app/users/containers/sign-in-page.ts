@@ -1,8 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
 
-import { LoginPageResource } from '../resources/users.resource';
+// import @ngrx
+import { Store } from '@ngrx/store';
+import { ROUTER_NAVIGATION } from '@ngrx/router-store';
+
+// import models
 import { Auth } from '../models/auth';
+
+// import resources
+import { LoginPageResource } from '../resources/users.resource';
+
+// import actions use to page
+import { SignInAction } from '../actions/auth.action';
+
+// import reducer for this actions
+import {
+    
+} from '../reducers/auth.reducer';
 
 @Component({
     moduleId: module.id,

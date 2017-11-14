@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 
 // import models
 import { User } from '../models/users';
@@ -24,7 +25,7 @@ import {
     SignInAction,
     SingInSuccessAction,
     SignInErrorAction,
-    SignInRedirectAction
+    // SignInRedirectAction
 } from '../actions/auth.action';
 
 @Injectable()
@@ -37,7 +38,7 @@ export class AuthEffects {
         .switchMap(payload => {
             return this.authService.signIn(payload.username, payload.password)
                 .map(user => new SingInSuccessAction({user: user}))
-                .catch(error => new SignInErrorAction({error: error}));
+                .catch(error => Observable.of(new SignInErrorAction({error: error})));
         });
 
     /**

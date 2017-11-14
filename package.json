@@ -55,6 +55,7 @@
     "connect-history-api-fallback": "^1.4.0",
     "create-file": "^1.0.1",
     "dateformat": "^3.0.2",
+    "deep-freeze-strict": "^1.1.1",
     "del": "^3.0.0",
     "dotenv": "^4.0.0",
     "git-rev-sync": "^1.9.1",
