@@ -8,8 +8,6 @@
         {{error | async}}
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
-        <pre>{{loginForm.value | json}}</pre>
-
         <div class="form-group">
             <input type="text" formControlName="username" class="form-control" id="username" placeholder="{{resource.placeholder_username}}"
                 autocomplete="off" spellcheck="off" [ngModel]="user.userName" required="{{resource.placeholder_username}}" inputPattern>
@@ -18,7 +16,7 @@
 
         <div class="form-group">
             <input type="password" formControlName="password" class="form-control" id="password" placeholder="{{resource.placeholder_pw}}"
-                autocomplete="off" spellcheck="off" [ngModel]="user.password" required passWordPattern>
+                autocomplete="off" spellcheck="off" [ngModel]="user.password" required inputPattern passWordPattern>
             <show-errors [control]="loginForm.controls.password"></show-errors>
         </div>
 

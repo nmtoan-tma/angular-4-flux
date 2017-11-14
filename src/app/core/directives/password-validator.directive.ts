@@ -20,11 +20,13 @@ export class PassWordPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
         const currentValue = ctrl.value;
         let stringUtil = new StringUtils();
+        let uiUtil = new UIUtils();
 
         if (stringUtil.isNullOrUndefined(currentValue)) {
             return null;
+        } else if (!uiUtil.isValidInputPattern(currentValue)) {
+            return null;
         } else {
-            let uiUtil = new UIUtils();
             const isValid = uiUtil.isValidPassword(currentValue);
 
             const message = {
