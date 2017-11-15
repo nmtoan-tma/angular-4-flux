@@ -37,19 +37,19 @@ module.exports = () => {
         dev_environment: {
             host: LIVE_SERVER_DEV_HOST,
             port: LIVE_SERVER_DEV_PORT,
-            base_dir: ['build'],
+            base_dir: ['build/client'],
             index: '/index.html'
         },
         test_environment: {
             host: LIVE_SERVER_TEST_HOST,
             port: LIVE_SERVER_TEST_PORT,
-            base_dir: ['build'],
+            base_dir: ['build/client'],
             index: '/index.html'
         },
         prod_environment: {
             host: LIVE_SERVER_PROD_HOST,
             port: LIVE_SERVER_PROD_PORT,
-            base_dir: ['build'],
+            base_dir: ['build/client'],
             index: '/index.html'
         }
     };

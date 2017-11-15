@@ -68,7 +68,7 @@ module.exports = () => {
     var minifyIndex = () => {
         return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
-            .pipe(gulp.dest(conf.paths.build + '/'));
+            .pipe(gulp.dest(conf.paths.build + '/client/'));
     };
 
     var vendorCSS = () => {
@@ -231,7 +231,7 @@ module.exports = () => {
                 conf.paths.src + '/**/*.js',
                 '!' + conf.paths.src + conf.paths.assetJsAllFile
             ])
-                .pipe(gulp.dest(conf.paths.build + '/'));
+                .pipe(gulp.dest(conf.paths.build + '/client/'));
         },
         copyNg2BootstrapTask: () => {
             return gulp.src(conf.configs.ng2Bootstrap)

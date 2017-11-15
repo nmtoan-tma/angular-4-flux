@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 
-// import modules
 import { UsersRoutingModule } from './users-routing.module';
-import { CoreModule } from '../core/core.module';
-
-// import users components
 import { SignInComponent } from './containers/sign-in-page';
+import { ShowErrorsComponent } from '../core/components/show-errors.component';
+import { InputPatternValidatorDirective } from '../core/directives/input-pattern-validator.directive';
+import { PassWordPatternValidatorDirective } from '../core/directives/password-validator.directive';
 
 const COMPONENTS = [
-    SignInComponent
+    SignInComponent,
+    InputPatternValidatorDirective,
+    PassWordPatternValidatorDirective,
+    ShowErrorsComponent
 ];
 
 @NgModule({
@@ -19,7 +21,6 @@ const COMPONENTS = [
         CommonModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
-        CoreModule,
         UsersRoutingModule
     ],
     declarations: COMPONENTS
