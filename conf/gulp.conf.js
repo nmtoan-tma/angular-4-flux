@@ -33,7 +33,7 @@ exports.paths = {
     buildCssFolder: '/client/css/',
     buildImageFolder: '/client/images/',
     buildFontsFolder: '/client/fonts/',
-    buildLibsFolder: '/client/libs/',
+    buildLibsFolder: '/libs/',
     buildJsFolder: '/client/js/',
     buildAppFolder: '/client/app/'
 };
