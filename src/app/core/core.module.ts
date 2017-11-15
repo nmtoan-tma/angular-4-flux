@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 // import core services
 import { BaseService } from './services/base.service';
@@ -29,6 +30,7 @@ const CORE_COMPONENTS = [
     declarations: CORE_COMPONENTS,
     imports: [
         CommonModule,
+        HttpClientModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
         CustomMaterialModule

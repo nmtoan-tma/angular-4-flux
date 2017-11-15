@@ -2,7 +2,7 @@
 import { Actions } from '../actions/auth.action';
 
 // import auth action type
-import { AuthActionTypes } from '../constants/auth-action-type';
+import { AuthActionTypes } from '../constants/AuthActionTypes';
 
 // import models
 import { Auth } from '../models/auth';
