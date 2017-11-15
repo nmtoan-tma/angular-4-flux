@@ -101,5 +101,6 @@ exports.configs = {
     hammerjs: './node_modules/hammerjs/**/*',
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
     tslib: './node_modules/tslib/tslib.js',
-    lodash: './node_modules/lodash/lodash.js'
+    lodash: './node_modules/lodash/lodash.js',
+    cryptoJs: './node_modules/crypto-js/crypto-js.js'
 };

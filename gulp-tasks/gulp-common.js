@@ -247,7 +247,8 @@ module.exports = () => {
                 conf.paths.src + conf.paths.assetJsFile,
                 conf.configs.bootstrapJs,
                 conf.configs.moment,
-                conf.configs.momentTimeZone
+                conf.configs.momentTimeZone,
+                conf.configs.cryptoJs
             ])
                 .pipe(eslint({
                     quiet: true

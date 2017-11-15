@@ -54,6 +54,7 @@
     "concurrently": "^3.5.0",
     "connect-history-api-fallback": "^1.4.0",
     "create-file": "^1.0.1",
+    "crypto-js": "^3.1.9-1",
     "dateformat": "^3.0.2",
     "del": "^3.0.0",
     "dotenv": "^4.0.0",
