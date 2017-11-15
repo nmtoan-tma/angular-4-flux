@@ -16,7 +16,7 @@ import { SignInAction } from '../actions/auth.action';
 
 // import reducer for this actions
 import {
-    
+
 } from '../reducers/auth.reducer';
 
 @Component({
@@ -32,11 +32,13 @@ export class SignInComponent implements OnInit {
 
     ngOnInit() {
         this.resource = LoginPageResource;
+
         this.user = {
             userName: '',
             password: '',
             rememberMe: false
         };
+
         this.loginForm = new fromAngularForms.FormGroup({
             username: new fromAngularForms.FormControl(),
             password: new fromAngularForms.FormControl(),

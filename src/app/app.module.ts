@@ -3,28 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
-// import custom core
-import { CustomMaterialModule } from './core/material.module';
+// import settings
 import { AppSettings } from './enums/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
 
 // import new module
+import { CoreModule } from './core/core.module';
 import { UsersModule } from './users/users.module';
 
-// import core component
+// import app component
 import { AppComponent } from './core/containers/app-page';
-import { NotFoundPageComponent } from './core/containers/not-found-page';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        NotFoundPageComponent
+        AppComponent
     ],
     imports: [
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
-        CustomMaterialModule,
+
+        CoreModule,
         AppRoutingModule,
         UsersModule
     ],
