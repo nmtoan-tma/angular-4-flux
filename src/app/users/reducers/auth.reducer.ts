@@ -1,3 +1,6 @@
+// import ui util
+import { UIUtils } from '../../shared/ui-utils';
+
 // import auth actions
 import { Actions } from '../actions/auth.action';
 
@@ -8,9 +11,6 @@ import { AuthActionTypes } from '../constants/AuthActionTypes';
 import { Auth } from '../models/auth';
 import { User } from '../models/users';
 import { State, initialState } from '../models/auth-state';
-
-// import ui util
-import { UIUtils } from '../../shared/ui-utils';
 
 /**
  * Reducer function
