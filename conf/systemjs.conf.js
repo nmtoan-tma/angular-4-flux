@@ -4,7 +4,7 @@
             'npm:': './libs/'
         },
         map: {
-            app: 'app',
+            app: 'client/app',
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
             '@angular/common/http': 'npm:@angular/common/bundles/common-http.umd.js',
