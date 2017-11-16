@@ -6,7 +6,7 @@ import { Auth } from '../models/auth';
 import { User } from '../models/users';
 
 // import auth action type
-import { AuthActionTypes } from '../constants/auth-action-type';
+import { AuthActionTypes } from '../constants/AuthActionTypes';
 
 /**
  * Sign in

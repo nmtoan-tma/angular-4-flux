@@ -18,7 +18,7 @@ import { User } from '../models/users';
 import { AuthService } from '../services/auth.service';
 
 // import auth action type
-import { AuthActionTypes } from '../constants/auth-action-type';
+import { AuthActionTypes } from '../constants/AuthActionTypes';
 
 // import auth action
 import {
