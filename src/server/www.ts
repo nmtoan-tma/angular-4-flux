@@ -4,11 +4,11 @@ import * as http from 'http';
 
 const debug = debugModule('node-express-typescript:server');
 
-// Get port from environment and store in Express.
+/* Get port from environment and store in Express.*/
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-// create server and listen on provided port (on all network interfaces).
+/* create server and listen on provided port (on all network interfaces).*/
 const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
@@ -26,7 +26,7 @@ function normalizePort(val: any): number|string|boolean {
   }
 
   if (port >= 0) {
-    // port number
+    /* port number */
     return port;
   }
 
@@ -36,16 +36,16 @@ function normalizePort(val: any): number|string|boolean {
 /**
  * Event listener for HTTP server "error" event.
  */
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
   let bind = typeof port === 'string'
     ? 'Pipe ' + port
-    : 'Port ' + port
+    : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
+  /* handle specific listen errors with friendly messages */
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');

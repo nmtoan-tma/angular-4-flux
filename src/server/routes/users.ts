@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-const users:Router = Router();
+const users: Router = Router();
 
 /* GET users listing. */
-users.get('/', function(req, res, next) {
+users.get('/', function(req: any, res: any, next: any) {
   res.send('respond with a resource');
 });
 
