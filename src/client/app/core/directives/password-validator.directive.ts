@@ -2,8 +2,8 @@ import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
 import { MessageErrorResource } from '../resources/msg-error.resource';
+import { CustomValidators } from '../../shared/custom-validators';
 import { UIUtils } from '../../shared/ui-utils';
-import { StringUtils } from '../../shared/string-utils';
 
 @Directive({
     selector: '[passWordPattern]',
@@ -19,8 +19,8 @@ import { StringUtils } from '../../shared/string-utils';
 export class PassWordPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
         const currentValue = ctrl.value;
-        let stringUtil = new StringUtils();
-        let uiUtil = new UIUtils();
+        let stringUtil = new UIUtils();
+        let uiUtil = new CustomValidators();
 
         if (stringUtil.isNullOrUndefined(currentValue)) {
             return null;
