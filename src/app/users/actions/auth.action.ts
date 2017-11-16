@@ -49,17 +49,17 @@ export class SignInErrorAction implements Action {
     constructor(public payload?: any) { }
 }
 
-/**
- * Sign in redirect
- * 
- * @class SignInRedirectAction
- * @implements {Action}
- */
-export class SignInRedirectAction implements Action {
-    readonly type: string = AuthActionTypes.SIGN_IN_REDIRECT;
+// /**
+//  * Sign in redirect
+//  * 
+//  * @class SignInRedirectAction
+//  * @implements {Action}
+//  */
+// export class SignInRedirectAction implements Action {
+//     readonly type: string = AuthActionTypes.SIGN_IN_REDIRECT;
 
-    constructor() { }
-}
+//     constructor() { }
+// }
 
 /**
  * Actions type
@@ -69,5 +69,5 @@ export class SignInRedirectAction implements Action {
 export type Actions
     = SignInAction
     | SingInSuccessAction
-    | SignInErrorAction
+    | SignInErrorAction;
     // | SignInRedirectAction;

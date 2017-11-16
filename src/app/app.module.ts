@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
 // import settings
-import { AppSettings } from './enums/AppSettings';
+import { AppSettings } from './utils/enums/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
 
 // import new module

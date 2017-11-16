@@ -11,10 +11,10 @@ exports.paths = {
     tmp: '.tmp',
     deploy: 'deploy',
     release: 'release',
-    environmentFile: '/app/enums/',
+    environmentFile: '/app/utils/enums/',
 
-    mainScss: '/styles/styles.scss',
-    appScssFile: '/styles/**/*.scss',
+    mainScss: '/assets/styles/styles.scss',
+    appScssFile: '/assets/styles/**/*.scss',
 
     appHtmlFile: '/app/**/*.html',
     appTsFile: '/app/**/*.ts',
