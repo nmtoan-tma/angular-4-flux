@@ -108,12 +108,12 @@ export class GlobalApp {
         }
     }
 
-    setGlobalInfo(info): void {
-        this._globalInfo = this.encryptValue(info);
-        if(this._sessionStorageAllowed === true) {
+    setGlobalInfo(globalInfo: string): void {
+        this._globalInfo = this.encryptValue(globalInfo);
+        if (this._sessionStorageAllowed === true) {
             try {
-                if(!this._uiutils.isNullOrUndefined(info)) {
-                    sessionStorage.setItem('globalInfo', this.encryptValue(info))
+                if (!this._uiutils.isNullOrUndefined(globalInfo)) {
+                    sessionStorage.setItem('globalInfo', this.encryptValue(globalInfo));
                 } else {
                     sessionStorage.removeItem('globalInfo');
                 }
