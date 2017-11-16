@@ -1,12 +1,17 @@
 'use strict';
 
 const gulp = require('gulp');
+const exec = require('child_process').exec
 
 const gulpCommon = require('./gulp-tasks/gulp-common')();
 const gulpBuild = require('./gulp-tasks/gulp-build')();
 const gulpServer = require('./gulp-tasks/gulp-server')();
 const gulpDeploy = require('./gulp-tasks/gulp-deploy')();
 const gulpDefault = require('./gulp-tasks/gulp-default')();
+const gulpBackend = require('./gulp-tasks/gulp-backend')();
+
+gulp.task('dev-backend', gulpBackend.devServerTask);
+gulp.task('backend', gulpBackend.defaultTask);
 
 gulp.task('clean', gulpCommon.cleanTask);
 gulp.task('copy-views', gulpCommon.copyViewsWithoutMinifyTask);
