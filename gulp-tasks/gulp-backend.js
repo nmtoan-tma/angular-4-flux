@@ -9,7 +9,11 @@ const conf = require('../conf/gulp.conf');
 module.exports = () => {
     let SERVER_DEV = connect;
     return {
-        devServerTask: conf.paths.build + '/**/www.js',
+        devServerTask: () => {
+            gulp.src([
+                conf.paths.build + '/**/www.js'
+            ])
+        },
         defaultTask: () => {
             return runSequence('dev-backend', conf.serverCallBack);
         }
