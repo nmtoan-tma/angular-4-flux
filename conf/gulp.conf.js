@@ -11,31 +11,31 @@ exports.paths = {
     tmp: '.tmp',
     deploy: 'deploy',
     release: 'release',
-    environmentFile: '/client/app/enums/',
+    environmentFile: '/app/utils/enums/',
 
-    mainScss: '/client/styles/styles.scss',
-    appScssFile: '/client/styles/**/*.scss',
+    mainScss: '/assets/styles/styles.scss',
+    appScssFile: '/assets/styles/**/*.scss',
 
-    appHtmlFile: '/client/app/**/*.html',
-    appTsFile: '/client/app/**/*.ts',
+    appHtmlFile: '/app/**/*.html',
+    appTsFile: '/app/**/*.ts',
 
-    appIndexFile: '/client/index.html',
+    appIndexFile: '/index.html',
 
-    assetCssFile: '/client/assets/css/*.css',
-    assetCssAllFile: '/client/assets/css/**',
-    assetImageFile: '/client/assets/images/**/*',
-    assetImageAllFile: '/client/assets/images/**',
-    assetFontsFile: '/client/assets/fonts/**/*',
-    assetFontsAllFile: '/client/assets/fonts/**',
-    assetJsFile: '/client/assets/js/**/*.js',
-    assetJsAllFile: '/client/assets/**/*.js',
+    assetCssFile: '/assets/css/*.css',
+    assetCssAllFile: '/assets/css/**',
+    assetImageFile: '/assets/images/**/*',
+    assetImageAllFile: '/assets/images/**',
+    assetFontsFile: '/assets/fonts/**/*',
+    assetFontsAllFile: '/assets/fonts/**',
+    assetJsFile: '/assets/js/**/*.js',
+    assetJsAllFile: '/assets/**/*.js',
 
-    buildCssFolder: '/client/css/',
-    buildImageFolder: '/client/images/',
-    buildFontsFolder: '/client/fonts/',
+    buildCssFolder: '/css/',
+    buildImageFolder: '/images/',
+    buildFontsFolder: '/fonts/',
     buildLibsFolder: '/libs/',
-    buildJsFolder: '/client/js/',
-    buildAppFolder: '/client/app/'
+    buildJsFolder: '/js/',
+    buildAppFolder: '/app/'
 };
 
 exports.htmlmin = {

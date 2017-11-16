@@ -57,6 +57,8 @@ export class SignInErrorAction implements Action {
 //  */
 // export class SignInRedirectAction implements Action {
 //     readonly type: string = AuthActionTypes.SIGN_IN_REDIRECT;
+
+//     constructor() { }
 // }
 
 /**

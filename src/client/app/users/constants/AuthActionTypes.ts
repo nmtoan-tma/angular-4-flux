@@ -1,4 +1,4 @@
-import { type } from '../../shared/utils';
+import { type } from '../../utils/utils';
 
 export const AuthActionTypes = {
     SIGN_IN: type('[auth] Sign In'),

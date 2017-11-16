@@ -5,7 +5,7 @@ import {
     HttpClient
 } from '@angular/common/http';
 
-import { AppSettings } from '../../enums/AppSettings';
+import { AppSettings } from '../../utils/enums/AppSettings';
 import { ReduxRequestOptions } from './redux-request-options';
 
 export class BaseService extends HttpClient {

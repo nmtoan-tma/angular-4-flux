@@ -35,7 +35,7 @@ export class GlobalApp {
     setCurrentUser(user: any) {
         this._user = this.encryptValue(user);
 
-        if (this._sessionStorageAllowed === true) {
+        if (this._sessionStorageAllowed) {
             try {
                 if (!this._uiutils.isNullOrUndefined(user)) {
                     sessionStorage.setItem('authService', this.encryptValue(user));
@@ -50,7 +50,7 @@ export class GlobalApp {
         }
     }
 
-    getCurrentUser(): string {
+    getCurrentUser(): any {
         if (this._uiutils.isNullOrUndefined(this._user)) {
             try {
                 if (this._sessionStorageAllowed) {
@@ -73,7 +73,7 @@ export class GlobalApp {
     setSecretKey(newKey: string): void {
         this._secretKey = newKey;
 
-        if (this._sessionStorageAllowed === true) {
+        if (this._sessionStorageAllowed) {
             try {
                 if (!this._uiutils.isNullOrUndefined(newKey)) {
                     sessionStorage.setItem('secretKey', JSON.stringify(newKey));
@@ -90,7 +90,7 @@ export class GlobalApp {
 
     getSecretKey(): string {
         if (this._uiutils.isNullOrUndefined(this._secretKey)) {
-            if (this._sessionStorageAllowed === true) {
+            if (this._sessionStorageAllowed) {
                 try {
                     let secretKey = sessionStorage.getItem('secretKey');
 
@@ -122,6 +122,36 @@ export class GlobalApp {
 
                 console.log('setGlobalInfo' + err);
             }
+        }
+    }
+
+    getGlobalInfo(): string {
+        if (this._uiutils.isNullOrUndefined(this._globalInfo)) {
+            if (this._sessionStorageAllowed) {
+                try {
+                    let globalInfo = sessionStorage.getItem('globalInfo');
+
+                    if (!this._uiutils.isNullOrUndefined(globalInfo)) {
+                        this._globalInfo = globalInfo;
+                    }
+                } catch (err) {
+                    this._sessionStorageAllowed = false;
+
+                    console.log('getGlobalInfo' + err);
+                }
+            }
+
+            return this._globalInfo;
+        }
+    }
+
+    getPermission(): Array<any> {
+        let user = this.getCurrentUser();
+
+        if (!this._uiutils.isNullOrUndefined(user)) {
+            return user.permissions;
+        } else {
+            return [];
         }
     }
 }
