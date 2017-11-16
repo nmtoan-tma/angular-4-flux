@@ -1,8 +1,8 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
+import { CustomValidators } from '../../shared/custom-validators';
 import { UIUtils } from '../../shared/ui-utils';
-import { StringUtils } from '../../shared/string-utils';
 
 @Directive({
     selector: '[inputPattern]',
@@ -18,12 +18,12 @@ import { StringUtils } from '../../shared/string-utils';
 export class InputPatternValidatorDirective implements Validator {
     validate(ctrl: FormControl): ValidationErrors {
         const currentValue = ctrl.value;
-        let stringUtil = new StringUtils();
+        let stringUtil = new UIUtils();
 
         if (stringUtil.isNullOrUndefined(currentValue)) {
             return null;
         } else {
-            let util = new UIUtils();
+            let util = new CustomValidators();
             const isValid = util.isValidInputPattern(currentValue);
 
             const message = {

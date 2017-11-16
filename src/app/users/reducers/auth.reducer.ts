@@ -9,8 +9,8 @@ import { Auth } from '../models/auth';
 import { User } from '../models/users';
 import { State, initialState } from '../models/auth-state';
 
-// import string util
-import { StringUtils } from '../../shared/string-utils';
+// import ui util
+import { UIUtils } from '../../shared/ui-utils';
 
 /**
  * Reducer function
@@ -30,7 +30,7 @@ export function reducer(state: any = initialState, action: Actions): State {
 
         case AuthActionTypes.SIGN_IN_SUCCESS: {
             const user: User = action.payload.user;
-            const stringUtil = new StringUtils();
+            const stringUtil = new UIUtils();
 
             if (stringUtil.isNullOrUndefined(user)) {
                 return state;
