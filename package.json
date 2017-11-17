@@ -11,7 +11,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node ./build/server/www.js",
+    "start": "node ./build/server/serverConf.js",
     "build": "ng build --prod --aot"
   },
   "dependencies": {
