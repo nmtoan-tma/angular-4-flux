@@ -19,7 +19,7 @@ module.exports = () => {
                     'sass',
                     'tslint',
                     'compile-ts',
-                    'default-engine-backend'
+                    'default-engine-backend',
                 ],
                 'server-dev-start',
                 'watch',

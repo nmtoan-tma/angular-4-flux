@@ -5,6 +5,7 @@ import * as path from 'path';
 
 import index from './routes/index';
 import users from './routes/users';
+import login from './routes/login';
 
 import cookieParser = require('cookie-parser');
 const app: express.Express = express();
@@ -23,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/users/:id', users);
+app.use('/login', login);
 
 /* catch 404 and forward to error handler */
 app.use((req, res, next) => {
