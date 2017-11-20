@@ -26,15 +26,14 @@
         </div>
 
         <button type="submit" class="btn btn-primary text-uppercase btn-block login__sign-in" [disabled]="loginForm.invalid">{{resource.label_sign_in}}</button>
-
-        <hr class="login__break">
-
-        <div class="login__forgot-link text-center">
-            <a href="javascript: void(0)" class="color--gray">{{resource.label_forgot_pw}}</a>
-        </div>
-
-        <div class="login-footer text-center">
-            <img src="{{resource.login_footer_logo}}" class="login-footer__logo" />
-        </div>
     </form>
+    
+    <hr class="login__break">
+
+    <div class="login__forgot-link text-center">
+        <a href="javascript: void(0)" class="color--gray">{{resource.label_forgot_pw}}</a>
+    </div>
+    <div class="login-footer text-center">
+        <img src="{{resource.login_footer_logo}}" class="login-footer__logo" />
+    </div>
 </div>

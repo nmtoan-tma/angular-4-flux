@@ -3,9 +3,6 @@ import * as fromAngularForms from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-// import core services
-import { BaseService } from './services/base.service';
-
 // import core containers
 import { NotFoundPageComponent } from './containers/not-found-page';
 

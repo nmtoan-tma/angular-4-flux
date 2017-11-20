@@ -59,9 +59,6 @@ export function reducer(state: any = initialState, action: Actions): State {
 }
 
 export const isAuthenticated = (state: State) => state.authenticated;
-
-export const isSignInLoaded = (state: State) => state.loaded;
 export const isSignInError = (state: State) => state.error;
 export const isSignInUser = (state: State) => state.user;
-
 export const isLoading = (state: State) => state.loading;
