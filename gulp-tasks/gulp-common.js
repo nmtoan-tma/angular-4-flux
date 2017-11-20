@@ -159,7 +159,7 @@ module.exports = () => {
         },
         delConfigFileTask: () => {
             return del([
-                conf.paths.build + conf.paths.environmentFile +'AppSettings.js'
+                conf.paths.build + conf.paths.environmentFile + 'AppSettings.js'
             ]);
         },
         vendorCssTaskWithMapTask: () => {
@@ -171,7 +171,10 @@ module.exports = () => {
             vendorCSS();
         },
         copyAngularTask: () => {
-            return gulp.src(conf.configs.angular)
+            return gulp.src([
+                conf.configs.angular,
+                '!' + conf.configs.angularHttp
+                ])
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@angular/'));
         },
         copyRxjsTask: () => {
