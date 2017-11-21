@@ -1,7 +1,18 @@
-import { NgModule, InjectionToken } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import {
+    StoreRouterConnectingModule,
+    RouterStateSerializer,
+} from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+// import { reducers, metaReducers } from './core/reducers/core.reducer';
+import { CustomRouterStateSerializer } from './utils/utils';
 
 // import settings
 import { AppSettings } from './utils/enums/AppSettings';

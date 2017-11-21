@@ -3,6 +3,7 @@ import { RouterStateSnapshot, Params } from '@angular/router';
 import { BaseRequestOptions } from '@angular/http';
 
 import { GlobalApp } from './session-storage';
+import { UIUtils } from './ui-utils';
 
 /**
  * This function coerces a string into a string literal type.
@@ -39,8 +40,8 @@ export class RouterStateUrl {
 }
 
 export class CustomRouterStateSerializer implements RouterStateSerializer<RouterStateUrl> {
-    serialize(routerState: RouterStateSnapshot) : RouterStateUrl {
-        const {url} = routerState;
+    serialize(routerState: RouterStateSnapshot): RouterStateUrl {
+        const { url } = routerState;
         const queryParams = routerState.root.queryParams;
 
         return {
@@ -50,19 +51,4 @@ export class CustomRouterStateSerializer implements RouterStateSerializer<Router
     }
 }
 
-/**
- * Customs request of http
- */
-// export class ReduxRequestOptions extends BaseRequestOptions {
-//     public token: string;
-
-//     constructor(options?: any) {
-//         super();
-
-//         this.headers.append('Content-Type', 'application/json');
-//         this.headers.append('Access-Control-Expose-Headers', '');
-
-//         // const user = 
-//     }
-// }
 

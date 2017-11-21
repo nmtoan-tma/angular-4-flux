@@ -10,6 +10,7 @@ export const MOCK_USER = initialUser; // TODO
 
 @Injectable()
 export class AuthService {
+    
     private _authenticated = false;
 
     public signIn(userName: string, password: string): Observable<User> {
