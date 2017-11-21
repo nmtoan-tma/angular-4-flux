@@ -71,6 +71,11 @@ module.exports = () => {
             .pipe(gulp.dest(conf.paths.build + '/client/'));
     };
 
+    var defaultEngineBackend = () => {
+        return gulp.src(conf.paths.src + conf.paths.defaultEngineBackend)
+            .pipe(gulp.dest(conf.paths.build + '/server/views/'));
+    };
+
     var vendorCSS = () => {
         return gulp.src([
             conf.paths.src + conf.paths.assetCssFile,
@@ -308,6 +313,14 @@ module.exports = () => {
         compileTsWithoutMapTask: () => {
             OPTIONS.DO_SOURCEMAPS = false;
             tsCompile();
+        },
+        defaultEngineBackendWithMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = true;
+            defaultEngineBackend();
+        },
+        defaultEngineBackendWithoutMapTask: () => {
+            OPTIONS.DO_SOURCEMAPS = false;
+            defaultEngineBackend();
         },
         watchTask: () => {
             plugins.livereload.listen();

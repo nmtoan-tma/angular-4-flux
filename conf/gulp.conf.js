@@ -30,6 +30,8 @@ exports.paths = {
     assetJsFile: '/client/assets/js/**/*.js',
     assetJsAllFile: '/client/assets/**/*.js',
 
+    defaultEngineBackend: '/server/views/*',
+
     buildCssFolder: '/client/css/',
     buildImageFolder: '/client/images/',
     buildFontsFolder: '/client/fonts/',

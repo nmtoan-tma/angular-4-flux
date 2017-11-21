@@ -11,7 +11,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node ./build/server/www.js",
+    "start": "node ./build/server/serverConf.js",
     "build": "ng build --prod --aot"
   },
   "dependencies": {
@@ -48,6 +48,7 @@
     "core-js": "^2.5.1",
     "cors": "^2.8.4",
     "debug": "~2.2.0",
+    "mongodb": "^2.2.33",
     "deep-freeze-strict": "^1.1.1",
     "express": "^4.16.2",
     "jade": "~1.11.0",

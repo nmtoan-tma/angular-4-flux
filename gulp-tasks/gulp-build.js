@@ -19,7 +19,8 @@ module.exports = () => {
                     'vendor-css-build',
                     'sass-build',
                     'tslint',
-                    'compile-ts-build'
+                    'compile-ts-build',
+                    'default-engine-backend-build'
                 ],
                 conf.errorHandler);
         }

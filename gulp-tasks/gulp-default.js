@@ -18,7 +18,8 @@ module.exports = () => {
                     'copy-index',
                     'sass',
                     'tslint',
-                    'compile-ts'
+                    'compile-ts',
+                    'default-engine-backend',
                 ],
                 'server-dev-start',
                 'watch',

@@ -5,19 +5,20 @@ import * as http from 'http';
 const debug = debugModule('node-express-typescript:server');
 
 /* Get port from environment and store in Express.*/
-const port = normalizePort(process.env.API_PORT || '3030');
+const host: any = process.env.API_HOST_NAME || 'localhost';
+const port: any = normalizePort(process.env.API_PORT || '3030');
 app.set('port', port);
 
 /* create server and listen on provided port (on all network interfaces).*/
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port, host);
 server.on('error', onError);
 server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val: any): number|string|boolean {
+function normalizePort(val: any): number | string | boolean {
   let port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -65,9 +66,7 @@ function onError(error: any) {
  */
 function onListening() {
   let addr = server.address();
-  let bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-
+  let address = addr.address === '127.0.0.1' ? 'localhost' : addr.address;
+  let bind = typeof addr === 'string' ? 'pipe ' + addr : address + ':' + addr.port;
   console.log('Listening on ' + bind);
 }
