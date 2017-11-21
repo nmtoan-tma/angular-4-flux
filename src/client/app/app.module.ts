@@ -11,7 +11,7 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-// import { reducers, metaReducers } from './core/reducers/core.reducer';
+import { reducers, metaReducers } from './core/reducers/core.reducer';
 import { CustomRouterStateSerializer } from './utils/utils';
 
 // import settings
@@ -34,11 +34,20 @@ import { AppComponent } from './core/containers/app-page';
         BrowserModule,
         BrowserAnimationsModule,
 
-        CoreModule,
+        StoreModule.forRoot(reducers, { metaReducers }),
+        StoreRouterConnectingModule,
+        AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
+        EffectsModule.forRoot([]),
+
         AppRoutingModule,
-        UsersModule
+        CoreModule.forRoot(),
+        UsersModule.forRoot()
     ],
-    providers: [],
+    providers: [
+        {
+            provide: RouterStateSerializer, useClass: CustomRouterStateSerializer
+        }
+    ],
     bootstrap: [AppComponent]
 })
 
