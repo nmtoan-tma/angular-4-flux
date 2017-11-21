@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { NotFoundPageResource } from '../resources/not-found-page.resource';
 
 @Component({
     moduleId: module.id,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'not-found-page',
     template: `
         <div class="not-found-page text-center">
@@ -13,7 +14,7 @@ import { NotFoundPageResource } from '../resources/not-found-page.resource';
                 </mat-card-content>
                 <mat-card-footer>
                     <mat-card-actions>
-                        <button mat-raised-button color="accent" routerLink="/">{{resource.card_action}}</button>
+                        <button mat-raised-button color="accent" routerLink="/gg">{{resource.card_action}}</button>
                     </mat-card-actions>
                 </mat-card-footer>
             </mat-card>

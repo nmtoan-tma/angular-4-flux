@@ -226,6 +226,10 @@ module.exports = () => {
             return gulp.src(conf.configs.lodash)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
+        copyDeepFreezeStrictTask: () => {
+            return gulp.src(conf.configs.deepFreezeStrict)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
         copyNgrxStoreFreezeTask: () => {
             return gulp.src(conf.configs.ngrxStoreFreeze)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ngrx-store-freeze/'));
@@ -286,7 +290,8 @@ module.exports = () => {
                     'copy-respondjs',
                     'copy-xdomainjs',
                     'copy-tslib',
-                    'copy-lodash'
+                    'copy-lodash',
+                    'copy-deep-freeze-strict'
                 ],
                 conf.errorHandler
             );

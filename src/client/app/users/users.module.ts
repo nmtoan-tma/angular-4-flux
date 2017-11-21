@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 
-import {CoreModule} from '../core/core.module';
+import { CoreModule } from '../core/core.module';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SignInComponent } from './containers/sign-in-page';
@@ -17,9 +17,16 @@ const COMPONENTS = [
         CommonModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
+
         UsersRoutingModule,
-        CoreModule
+        CoreModule.forRoot()
     ],
     declarations: COMPONENTS
 })
-export class UsersModule { }
+export class UsersModule {
+    static forRoot() {
+        return {
+            ngModule: CoreModule
+        };
+    }
+}

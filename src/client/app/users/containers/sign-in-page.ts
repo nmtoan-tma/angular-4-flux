@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -23,6 +23,7 @@ import {
 
 @Component({
     moduleId: module.id,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'sign-in',
     templateUrl: './sign-in-page.html'
 })
@@ -49,7 +50,7 @@ export class SignInComponent implements OnInit {
         });
     }
 
-    onSubmit(form) {
-        this.store.dispatch(form.value);
-    }
+    // onSubmit(form) {
+    //     this.store.dispatch(form.value);
+    // }
 }

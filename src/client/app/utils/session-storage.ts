@@ -13,7 +13,7 @@ export class GlobalApp {
             try {
                 return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey);
             } catch (err) {
-                console.log('encryptValue' + err);
+                console.log('encryptValue' , err);
             }
         } else {
             return value;
@@ -25,7 +25,7 @@ export class GlobalApp {
             try {
                 return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey);
             } catch (err) {
-                console.log('decryptValue' + err);
+                console.log('decryptValue' , err);
             }
         } else {
             return value;
@@ -45,7 +45,7 @@ export class GlobalApp {
             } catch (err) {
                 this._sessionStorageAllowed = false;
 
-                console.log('setCurrentUser' + err);
+                console.log('setCurrentUser' , err);
             }
         }
     }
@@ -63,7 +63,7 @@ export class GlobalApp {
             } catch (err) {
                 this._sessionStorageAllowed = false;
 
-                console.log('getCurrentUser' + err);
+                console.log('getCurrentUser' , err);
             }
         }
 
@@ -83,7 +83,7 @@ export class GlobalApp {
             } catch (err) {
                 this._sessionStorageAllowed = false;
 
-                console.log('setSecretKey' + err);
+                console.log('setSecretKey' , err);
             }
         }
     }
@@ -100,7 +100,7 @@ export class GlobalApp {
                 } catch (err) {
                     this._sessionStorageAllowed = false;
 
-                    console.log('getSecretKey' + err);
+                    console.log('getSecretKey' , err);
                 }
             }
 
@@ -120,7 +120,7 @@ export class GlobalApp {
             } catch (err) {
                 this._sessionStorageAllowed = false;
 
-                console.log('setGlobalInfo' + err);
+                console.log('setGlobalInfo' , err);
             }
         }
     }
@@ -137,7 +137,7 @@ export class GlobalApp {
                 } catch (err) {
                     this._sessionStorageAllowed = false;
 
-                    console.log('getGlobalInfo' + err);
+                    console.log('getGlobalInfo' , err);
                 }
             }
 

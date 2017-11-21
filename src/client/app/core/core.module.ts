@@ -30,13 +30,16 @@ const CORE_COMPONENTS = [
         HttpClientModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
+
         CustomMaterialModule
     ],
-    exports: CORE_COMPONENTS,
-    providers: [
-        // BaseService
-    ]
+    exports: CORE_COMPONENTS
 })
 export class CoreModule {
-
+    static forRoot() {
+        return {
+            ngModule: CoreModule,
+            providers: []
+        };
+    }
 }

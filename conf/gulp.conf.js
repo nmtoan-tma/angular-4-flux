@@ -105,5 +105,6 @@ exports.configs = {
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
     tslib: './node_modules/tslib/tslib.js',
     lodash: './node_modules/lodash/lodash.js',
-    cryptoJs: './node_modules/crypto-js/crypto-js.js'
+    cryptoJs: './node_modules/crypto-js/crypto-js.js',
+    deepFreezeStrict: './node_modules/deep-freeze-strict/index.js'
 };
