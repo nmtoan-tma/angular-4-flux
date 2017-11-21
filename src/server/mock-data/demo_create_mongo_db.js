@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var mongodb = require('mongodb'); 
 var ObjectId = require('mongodb').ObjectId; 
-
+// mongodb://username:<PASSWORD>@demo-mcare-shard-00-00-op5pw.mongodb.net:27017,demo-mcare-shard-00-01-op5pw.mongodb.net:27017,demo-mcare-shard-00-02-op5pw.mongodb.net:27017/test?ssl=true&replicaSet=DEMO-MCARE-shard-0&authSource=admin 
 const url = 'mongodb://nmtoan:uYzQSW3Cciw8p0rs@demo-mcare-shard-00-00-op5pw.mongodb.net:27017,demo-mcare-shard-00-01-op5pw.mongodb.net:27017,demo-mcare-shard-00-02-op5pw.mongodb.net:27017/test?ssl=true&replicaSet=DEMO-MCARE-shard-0&authSource=admin';
 
 // MongoDB Create Collection
