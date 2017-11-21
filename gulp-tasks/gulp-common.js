@@ -228,7 +228,7 @@ module.exports = () => {
         },
         copyDeepFreezeStrictTask: () => {
             return gulp.src(conf.configs.deepFreezeStrict)
-                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'deep-freeze-strict/'));
         },
         copyNgrxStoreFreezeTask: () => {
             return gulp.src(conf.configs.ngrxStoreFreeze)

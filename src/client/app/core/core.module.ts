@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 // import core containers
 import { NotFoundPageComponent } from './containers/not-found-page';
@@ -27,7 +27,7 @@ const CORE_COMPONENTS = [
     declarations: CORE_COMPONENTS,
     imports: [
         CommonModule,
-        HttpClientModule,
+        RouterModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
 

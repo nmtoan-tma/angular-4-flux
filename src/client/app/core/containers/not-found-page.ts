@@ -14,7 +14,7 @@ import { NotFoundPageResource } from '../resources/not-found-page.resource';
                 </mat-card-content>
                 <mat-card-footer>
                     <mat-card-actions>
-                        <button mat-raised-button color="accent" routerLink="/gg">{{resource.card_action}}</button>
+                        <button mat-raised-button color="accent" routerLink="/">{{resource.card_action}}</button>
                     </mat-card-actions>
                 </mat-card-footer>
             </mat-card>
@@ -24,4 +24,6 @@ import { NotFoundPageResource } from '../resources/not-found-page.resource';
 
 export class NotFoundPageComponent {
     public resource = NotFoundPageResource;
+
+    
 }

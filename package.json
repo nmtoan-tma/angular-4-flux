@@ -14,7 +14,8 @@
     "start": "node ./build/server/serverConf.js",
     "build": "ng build --prod --aot"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@angular/animations": "^5.0.1",
     "@angular/cdk": "^5.0.0-rc0",
     "@angular/common": "^5.0.1",
@@ -61,9 +62,7 @@
     "systemjs": "^0.20.19",
     "tslib": "^1.8.0",
     "xdomain": "^0.7.3",
-    "zone.js": "^0.8.18"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.18",
     "bootstrap": "^3.3.7",
     "buffer-to-vinyl": "^1.1.0",
     "codelyzer": "^4.0.1",

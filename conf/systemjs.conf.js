@@ -42,11 +42,11 @@
             '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
             '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
             '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js',
-            'ngrx-store-freeze': 'npm:ngrx-store-freeze/bundles/ngrx-store-freeze.umd.js',
+            'deep-freeze-strict': 'npm:deep-freeze-strict',  
+            'ngrx-store-freeze': 'npm:ngrx-store-freeze',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
-            'lodash': 'npm:lodash.js',
-            'deep-freeze-strict': 'npm:index.js'            
+            'lodash': 'npm:lodash.js'
         },
         packages: {
             app: {
@@ -57,6 +57,14 @@
                 defaultExtension: 'js'
             },
             'angular2-in-memory-web-api': {
+                main: './index.js',
+                defaultExtension: 'js'
+            },
+            'deep-freeze-strict': {
+                main: './index.js',
+                defaultExtension: 'js'
+            },
+            'ngrx-store-freeze': {
                 main: './index.js',
                 defaultExtension: 'js'
             }

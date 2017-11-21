@@ -106,5 +106,5 @@ exports.configs = {
     tslib: './node_modules/tslib/tslib.js',
     lodash: './node_modules/lodash/lodash.js',
     cryptoJs: './node_modules/crypto-js/crypto-js.js',
-    deepFreezeStrict: './node_modules/deep-freeze-strict/index.js'
+    deepFreezeStrict: './node_modules/deep-freeze-strict/**/*.js'
 };
